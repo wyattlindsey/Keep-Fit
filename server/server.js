@@ -1,23 +1,19 @@
-var helpers = require('./helper.js'); // our custom middleware
-var requestHandler = require('./requestHandler');
-var morgan = require('morgan');
-var path = require('path');
-var ex = require('express');
-var bodyParser = require('body-parser');
-module.exports = function (app, express) {
+var express = require('express');
+var helper = require('./helper.js');
 
-    // app.use(morgan()); <-- use for debugging
-    //app.use(bodyParser.urlencoded()); <-- use for ajax post requests
-    app.get('/',requestHandler.getIndex);
-    app.post('/api/addUser',requestHandler.addUser);
-    app.get('/api/logIn',requestHandler.logIn);
-    app.post('/api/signUp',requestHandler.signUp);
-    app.post('/api/submitWorkout', requestHandler.submitWorkout);
-    app.get('/api/getWorkouts', requestHandler.getWorkouts);
+var app = express();
 
+var catList = mongoose.model('catList',catSchema);
 
-
-    // app.use(helpers.errorLogger); <-- debugging
-    // app.use(helpers.errorHandler); <--debugging
-
-};
+require('./routes.js')(app, express);
+// start listening to requests on port 800
+app.listen(8000,(err) => {
+    if (err) {
+        console.log('Error', err);
+    } else {
+        console.log('Server listening on', 8000);
+}
+});
+// export our app for testing and flexibility, required by index.js
+module.exports.app = app;
+module.exports.catList = catList;
