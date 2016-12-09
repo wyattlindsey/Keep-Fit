@@ -18,8 +18,8 @@ module.exports = {
   addUser: function (req, res, next) {
 
   },
-  getIndex: function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../client/index.html'));
-    res.status(200);
-  }
+//   getIndex: function (req, res, next) {
+//     res.sendFile(path.join(__dirname, '../client/index.html'));
+//     res.status(200);
+//   }
 };
