@@ -1,9 +1,8 @@
 var helpers = require('./helper.js'); // our custom middleware
 var requestHandler = require('./requestHandler');
 //var morgan = require('morgan'); <-- debugging
-var path = require('path');
-var ex = require('express');
 var bodyParser = require('body-parser');
+
 module.exports = function (app, express) {
 
   // app.use(morgan()); <-- debugging
