@@ -7,7 +7,7 @@ module.exports = function (app, express) {
 
   // app.use(morgan()); <-- debugging
   //app.use(bodyParser.urlencoded()); <-- use for ajax post requests
-  app.use(express.static(__dirname + './client'));
+  app.use(express.static(__dirname + '../client'));
   //app.get('/',requestHandler.getIndex);
   app.post('/api/addUser',requestHandler.addUser);
   app.get('/api/logIn',requestHandler.logIn);
