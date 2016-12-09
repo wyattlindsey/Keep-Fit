@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/achung89/Keep-Fit.git"
+    "url": "git+https://github.com/Keep-Fit/Keep-Fit.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/achung89/Keep-Fit/issues"
+    "url": "https://github.com/Keep-Fit/Keep-Fit/issues"
   },
-  "homepage": "https://github.com/achung89/Keep-Fit#readme",
+  "homepage": "https://github.com/Keep-Fit/Keep-Fit#readme",
   "dependencies": {
     "bluebird": "^3.4.6",
     "express": "^4.14.0",
