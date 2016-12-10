@@ -18,17 +18,19 @@ import Workout from './Workout.jsx';
 
 const App = () => (
   <div>
-    <div>
-      Hi I'm stateless but exported!
-    </div>
-    <div>
-      <Link to="/signup">Click here to go to signup</Link>
-    </div>
-    <div>
-      <Link to="/user">Click here to go to User</Link>
-    </div>
-    <div>
-      <Link to="/workout">Click here to go to Workout</Link>
+    <div className="container">
+      <div>
+        Hi I'm stateless but exported!
+      </div>
+      <div>
+        <Link to="/signup">Click here to go to signup</Link>
+      </div>
+      <div>
+        <Link to="/user">Click here to go to User</Link>
+      </div>
+      <div>
+        <Link to="/workout">Click here to go to Workout</Link>
+      </div>
     </div>
   </div>
 )

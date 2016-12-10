@@ -88,34 +88,38 @@
 	    null,
 	    React.createElement(
 	      'div',
-	      null,
-	      'Hi I\'m stateless but exported!'
-	    ),
-	    React.createElement(
-	      'div',
-	      null,
+	      { className: 'container' },
 	      React.createElement(
-	        _reactRouter.Link,
-	        { to: '/signup' },
-	        'Click here to go to signup'
-	      )
-	    ),
-	    React.createElement(
-	      'div',
-	      null,
+	        'div',
+	        null,
+	        'Hi I\'m stateless but exported!'
+	      ),
 	      React.createElement(
-	        _reactRouter.Link,
-	        { to: '/user' },
-	        'Click here to go to User'
-	      )
-	    ),
-	    React.createElement(
-	      'div',
-	      null,
+	        'div',
+	        null,
+	        React.createElement(
+	          _reactRouter.Link,
+	          { to: '/signup' },
+	          'Click here to go to signup'
+	        )
+	      ),
 	      React.createElement(
-	        _reactRouter.Link,
-	        { to: '/workout' },
-	        'Click here to go to Workout'
+	        'div',
+	        null,
+	        React.createElement(
+	          _reactRouter.Link,
+	          { to: '/user' },
+	          'Click here to go to User'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          _reactRouter.Link,
+	          { to: '/workout' },
+	          'Click here to go to Workout'
+	        )
 	      )
 	    )
 	  );
@@ -9096,12 +9100,44 @@
 	exports.default = function () {
 	  return React.createElement(
 	    "div",
-	    null,
-	    "Hi! I'm signup!",
+	    { className: "container" },
 	    React.createElement(
-	      _reactRouter.Link,
-	      { to: "/" },
-	      "click here to go back to main"
+	      "div",
+	      { className: "row" },
+	      React.createElement(
+	        "div",
+	        { className: "col-sm-6 col-sm-offset-3 signup-form text-center" },
+	        React.createElement(
+	          "h1",
+	          null,
+	          "Sign up!"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "col-sm-6 col-sm-offset-3" },
+	          React.createElement(
+	            "form",
+	            null,
+	            React.createElement(
+	              "label",
+	              { className: "text-left" },
+	              "Username:",
+	              React.createElement("input", { type: "text", placeholder: "Username", className: "fat-width" })
+	            ),
+	            React.createElement(
+	              "label",
+	              { className: "text-left" },
+	              "Password:",
+	              React.createElement("input", { type: "text", placeholder: "Password", className: "fat-width" })
+	            ),
+	            React.createElement(
+	              "button",
+	              { type: "submit", value: "Sign up", className: "btn btn-default margin-top-10" },
+	              "Sign Up"
+	            )
+	          )
+	        )
+	      )
 	    )
 	  );
 	};
@@ -9121,12 +9157,98 @@
 	exports.default = function () {
 	  return React.createElement(
 	    "div",
-	    null,
-	    "Hi! I'm user page",
+	    { className: "container" },
 	    React.createElement(
-	      _reactRouter.Link,
-	      { to: "/" },
-	      "click here to go back to main"
+	      "div",
+	      { className: "col-sm-6" },
+	      React.createElement(
+	        "div",
+	        { className: "profile" },
+	        React.createElement(
+	          "div",
+	          null,
+	          React.createElement("img", { className: "pull-left profile-img", src: "http://assets.schwarzenegger.com/images/img-2.jpg" }),
+	          React.createElement(
+	            "b",
+	            null,
+	            "Axeman Muscleface"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          null,
+	          "Some data goes here, maybe last workout, or friends or something. Activated charcoal helvetica irony tote bag adipisicing. Kickstarter tattooed accusamus selvage, brooklyn coloring book la croix. Echo park typewriter bushwick tumeric poutine, disrupt nesciunt. Tempor 3 wolf moon dolore ea master cleanse, messenger bag jianbing seitan. Nulla eiusmod nisi, tattooed assumenda franzen venmo fashion axe ethical pop-up woke heirloom. Vaporware shabby chic wayfarers activated charcoal brooklyn. Ugh crucifix messenger bag nisi pork belly."
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "graphs" },
+	        "Graphs go here:",
+	        React.createElement(
+	          "div",
+	          null,
+	          React.createElement("img", { src: "http://www.learnersdictionary.com/media/ld/images/legacy_print_images/bar_graph.gif" })
+	        )
+	      )
+	    ),
+	    React.createElement(
+	      "div",
+	      { className: "col-sm-6" },
+	      React.createElement(
+	        "div",
+	        { className: "workouts" },
+	        React.createElement(
+	          "a",
+	          { className: "add-workout text-center text-white" },
+	          "Add a New Workout!"
+	        ),
+	        "List of recent workouts goes here.",
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "workout" },
+	          "Date: Jan 1st. Workout: Legs"
+	        )
+	      )
 	    )
 	  );
 	};
@@ -9146,12 +9268,79 @@
 	exports.default = function () {
 	  return React.createElement(
 	    "div",
-	    null,
-	    "Hi! I'm workout page.",
+	    { className: "container" },
 	    React.createElement(
-	      _reactRouter.Link,
-	      { to: "/" },
-	      "click here to go back to main"
+	      "div",
+	      { className: "row" },
+	      React.createElement(
+	        "div",
+	        { className: "col-sm-6 col-sm-offset-3 signup-form text-center" },
+	        React.createElement(
+	          "h1",
+	          null,
+	          "Add Workout!"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "col-sm-8 col-sm-offset-2" },
+	          React.createElement(
+	            "form",
+	            null,
+	            React.createElement(
+	              "label",
+	              { className: "text-left" },
+	              "Workout Name:",
+	              React.createElement("input", { type: "text", placeholder: "Workout Name", className: "fat-width" })
+	            ),
+	            React.createElement(
+	              "button",
+	              { type: "submit", value: "Add Workout", className: "btn btn-default margin-top-10" },
+	              "Add Workout"
+	            )
+	          ),
+	          React.createElement(
+	            "form",
+	            null,
+	            React.createElement(
+	              "table",
+	              null,
+	              React.createElement(
+	                "tbody",
+	                null,
+	                React.createElement(
+	                  "tr",
+	                  null,
+	                  React.createElement(
+	                    "td",
+	                    null,
+	                    "Exercise:"
+	                  ),
+	                  React.createElement(
+	                    "td",
+	                    null,
+	                    React.createElement("input", { type: "text", placeholder: "Exercise" })
+	                  ),
+	                  React.createElement(
+	                    "td",
+	                    null,
+	                    React.createElement("input", { type: "number", className: "thin-width" })
+	                  ),
+	                  React.createElement(
+	                    "td",
+	                    null,
+	                    React.createElement("input", { type: "number", className: "thin-width" })
+	                  ),
+	                  React.createElement(
+	                    "td",
+	                    null,
+	                    React.createElement("span", { className: "glyphicon glyphicon-plus plus-btn" })
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
 	    )
 	  );
 	};
