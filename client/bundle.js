@@ -55,5 +55,7 @@
 
 	console.log('Webpack is working!');
 
+	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
+
 /***/ }
 /******/ ]);
