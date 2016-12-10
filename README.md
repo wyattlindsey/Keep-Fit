@@ -20,15 +20,14 @@
 
 ## Usage
 
-> Some usage instructions
+For webpack dev:
+- Start as webpack -w for watching. webpack -p to minify for production version. nb: occasionally webpack -w won't hear latest changes. Restart it occasionally/if your bug seems weird.
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node 6.9.x
+- React 15.x
+- Webpack 1.14.x
 
 ## Development
 
@@ -37,9 +36,8 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
+sudo npm install -g webpack
 npm install
-bower install
 ```
 
 ### Roadmap
