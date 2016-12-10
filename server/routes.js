@@ -1,11 +1,11 @@
 var helpers = require('./helper.js'); // our custom middleware
 var requestHandler = require('./requestHandler');
-//var morgan = require('morgan'); <-- debugging
+var morgan = require('morgan'); //<-- debugging
 //var bodyParser = require('body-parser');
 
 module.exports = function (app, express) {
 
-  // app.use(morgan()); <-- debugging
+  app.use(morgan()); //<-- debugging
   //app.use(bodyParser.urlencoded()); <-- use for ajax post requests
   app.use(express.static(__dirname + '../client'));
   //app.get('/',requestHandler.getIndex);
