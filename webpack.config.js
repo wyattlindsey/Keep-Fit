@@ -1,8 +1,13 @@
+// This file generates our bundle.js.
+// Basically, it searches for any js/jsx file, runs babel on it (so we can use ES6)
+// then smooshes it into a single bundle.js file.
+// Easiest to run webpack -w to watch during development.
+
 var path = require('path');
 
 var config = {
   context: path.join(__dirname, 'client'),
-  entry: ['./app.js'],
+  entry: ['./components/App.jsx'],
   output: {
     path: path.join(__dirname, 'client'),
     filename: 'bundle.js'
