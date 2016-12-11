@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Keep-Fit</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="splash.css">
+</head>
+
+<body>
+  <div class="ten">
+    <img src="kf-lg.png">
+    <div class="entry row">
+      <p>
+        Welcome to Keep-Fit, please log in to continue.
+      </p>
+      <form class="col-sm-12">
+        <input placeholder="Username" required/><br>
+        <input placeholder="Password" required/><br>
+        <button class="btn btn-default">Log In</button>
+      </form>
+      <i>Don't have an account? <a href="/signup">Sign up!</a></i>
+    </div>
+  </div>
+  <canvas id="scene" class="zero"></canvas>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js'></script>
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/OrbitControls.js'></script>
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/perlin.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+  <script src="splash.js"></script>
+</body>
+
+</html>
