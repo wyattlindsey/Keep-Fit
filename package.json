@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "webpack",
     "test": "mocha './client/**/*.spec.js' --compilers js:babel-core/register",
-    "start": "babel watch . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline & live-server"
+    "start": "node /server/server.js"
   },
   "repository": {
     "type": "git",
