@@ -1,10 +1,9 @@
 var helper = require('./helper.js');
-var Promise = require('bluebird');
+//var Promise = require('bluebird');
 var server = require('./server');
 var path = require('path');
 var query = require('./db/query-modules.js');
 // var bcrypt = require('bcrypt');
-
 module.exports = {
   logIn: function (req, res, next) {
 
@@ -19,7 +18,6 @@ module.exports = {
     //    //assume that this is async
     //    next();
     //  });
-
     // generate salt
     // hash password + salt
     query.signUp();
@@ -51,8 +49,4 @@ module.exports = {
         res.send(data);
       })
     }
-//   getIndex: function (req, res, next) {
-//     res.sendFile(path.join(__dirname, '../client/index.html'));
-//     res.status(200);
-//   }
 };
