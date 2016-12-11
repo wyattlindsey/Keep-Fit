@@ -2,7 +2,7 @@ var helper = require('./helper.js');
 var Promise = require('bluebird');
 var server = require('./server');
 var path = require('path');
-var query = require('./query-modules.js');
+var query = require('./db/query-modules.js');
 
 module.exports = {
   signUp: function (req, res, next) {
@@ -25,7 +25,7 @@ module.exports = {
     // call a query
     Promise.promisify(query.getUser);
     query.getUser(req.body.username).then(function(){
-      res.
+      return res;
     })
 
   }
