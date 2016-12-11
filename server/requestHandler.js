@@ -3,6 +3,7 @@ var Promise = require('bluebird');
 var server = require('./server');
 var path = require('path');
 var query = require('./db/query-modules.js');
+// var bcrypt = require('bcrypt');
 
 module.exports = {
   signUp: function (req, res, next) {
@@ -18,15 +19,29 @@ module.exports = {
 
   },
   addUser: function (req, res, next) {
-    return query.addUser(req.username);
+    // TODO: add salt and hash
+    // var cipher = Promise.promisify(bcrypt.hash);
+
+    // return cipher(req.password, null, null).bind(this)
+    //   .then(function(hash) {
+    //    this.password = hash;
+    //    //assume that this is async
+    //    next();
+    //  });
+
+    // generate salt
+    // hash password + salt
+    query.addUser(req.username, 1, 1);
+    res.statusCode(200);
   },
   getUser: function (req, res, next) {
     // convert to array syntax
     // call a query
-    Promise.promisify(query.getUser);
-    query.getUser(req.body.username).then(function(data){
-      return res;
-    })
+    // Promise.promisify(query.getUser);
+    console.log("R-H getUser")
+    query.getUser('Carl', function(data){
+      res.send(data);
+    });
 
   }
 //   getIndex: function (req, res, next) {

@@ -11,7 +11,7 @@ module.exports = function (app, express) {
   app.use(express.static(path.join(__dirname, '../client')));
   //app.get('/',requestHandler.getIndex);
   app.post('/api/addUser',requestHandler.addUser);
-  app.get('/api/logIn',requestHandler.logIn);
+  app.get('/api/getUser',requestHandler.getUser);
   app.post('/api/signUp',requestHandler.signUp);
   app.post('/api/submitWorkout', requestHandler.submitWorkout);
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
