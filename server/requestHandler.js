@@ -24,7 +24,7 @@ module.exports = {
     // convert to array syntax
     // call a query
     Promise.promisify(query.getUser);
-    query.getUser(req.body.username).then(function(){
+    query.getUser(req.body.username).then(function(data){
       return res;
     })
 
