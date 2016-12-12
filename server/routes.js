@@ -10,11 +10,13 @@ module.exports = function (app, express) {
   //app.use(bodyParser.urlencoded()); <-- use for ajax post requests
   app.use(express.static(path.join(__dirname, '../client')));
   //app.get('/',requestHandler.getIndex);
-  app.post('/api/addUser',requestHandler.addUser);
-  app.get('/api/logIn',requestHandler.logIn);
-  app.post('/api/signUp',requestHandler.signUp);
-  app.post('/api/submitWorkout', requestHandler.submitWorkout);
+  app.get('/api/getUser',requestHandler.getUser);
+  app.get('/api/signUp',requestHandler.signUp);
+  app.get('/api/submitWorkout', requestHandler.submitWorkout);
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
+  app.get('/api/submitExercise', requestHandler.submitExercise);
+  app.get('/api/getExercises', requestHandler.getExercises);
+
 
   //need to add this to handle direct addressing of routes.
   //will serve index.html which has our jsx linked for routing.
