@@ -4,6 +4,7 @@
 SELECT
   // Get a user's Workout's IDs
 // -- select ID from Users_Workouts where ID_Users = (select ID from Users where Users.Username = 'codybot');
+// 
 select * from Users_Workouts_Exercises where ID_Users_Workouts = (
   select ID from Users_Workouts where ID_Users = (
     select ID from Users where Users.Username = 'codybot'
