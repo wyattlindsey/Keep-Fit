@@ -7,7 +7,8 @@ export default class Workout extends React.Component {
       workout: [],
       exercise: '',
       weight: 0,
-      reps: 0
+      reps: 0,
+      workoutName: ''
     };
 
     this.addExercise = this.addExercise.bind(this);
@@ -15,7 +16,11 @@ export default class Workout extends React.Component {
     this.handleWeightChange = this.handleWeightChange.bind(this);
     this.handleRepChange = this.handleRepChange.bind(this);
     this.completeWorkout = this.completeWorkout.bind(this);
+    this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
+  }
 
+  handleWorkoutChange(e) {
+    this.setState({workoutName: e.target.value});
   }
 
   handleExerciseChange(e) {
@@ -43,14 +48,16 @@ export default class Workout extends React.Component {
     this._ex.focus();
   }
 
-  completeWorkout() {
-    console.log(this.state.workout);
-
-    $.post('/api/submitWorkout', JSON.stringify(this.state.workout), (err, resp)=>{
-      if (err) console.log(err);
-      // This is how the docs say to do redirects. Does some sort of query-ish thing though and double-refreshes target page. :(
-      browserHistory.push('/user');
+  // Submits packaged workout obj to db as x-www-form data.
+  completeWorkout(e) {
+    e.preventDefault();
+    var postObj = {};
+    postObj.workoutName = this.state.workoutName;
+    postObj.exercises = this.state.workout;
+    $.post('/api/createWorkout', postObj, (err, resp)=>{
+      if (err) {console.log('Post Error', err)};
     });
+    browserHistory.push('/user');
 
   }
 
@@ -63,7 +70,12 @@ export default class Workout extends React.Component {
             <div className="col-sm-8 col-sm-offset-2">
               <form>
                 <label className="text-left">Workout Name:
-                  <input type='text' placeholder='Workout Name' className="fat-width"/>
+                  <input
+                    type='text'
+                    placeholder='Workout Name'
+                    className="fat-width"
+                    onChange={this.handleWorkoutChange}
+                    />
                 </label>
                 <table>
                   <thead>

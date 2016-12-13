@@ -9235,10 +9235,25 @@
 	          reps: 8
 	        }]
 	      } }];
+
+	    _this.state = { data: [] };
+	    _this.componentDidMount = _this.componentDidMount.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(User, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      $.get('/api/getWorkouts', function (data, err) {
+	        if (err) console.log(err);
+	        _this2.setState({
+	          data: data
+	        });
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -9289,14 +9304,14 @@
 	              'Add a New Workout!'
 	            ),
 	            'List of recent workouts goes here.',
-	            this.data.map(function (i, k) {
+	            this.state.data.map(function (i, k) {
 	              return React.createElement(
 	                'div',
 	                { className: 'workout', key: k },
 	                'Date: ',
-	                i.Workout.CreatedAt,
+	                i.Date,
 	                'Name: ',
-	                i.Workout.Name
+	                i.name
 	              );
 	            })
 	          )
@@ -9345,7 +9360,8 @@
 	      workout: [],
 	      exercise: '',
 	      weight: 0,
-	      reps: 0
+	      reps: 0,
+	      workoutName: ''
 	    };
 
 	    _this.addExercise = _this.addExercise.bind(_this);
@@ -9353,11 +9369,16 @@
 	    _this.handleWeightChange = _this.handleWeightChange.bind(_this);
 	    _this.handleRepChange = _this.handleRepChange.bind(_this);
 	    _this.completeWorkout = _this.completeWorkout.bind(_this);
-
+	    _this.handleWorkoutChange = _this.handleWorkoutChange.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Workout, [{
+	    key: 'handleWorkoutChange',
+	    value: function handleWorkoutChange(e) {
+	      this.setState({ workoutName: e.target.value });
+	    }
+	  }, {
 	    key: 'handleExerciseChange',
 	    value: function handleExerciseChange(e) {
 	      this.setState({ exercise: e.target.value });
@@ -9388,16 +9409,22 @@
 	      // this uses the ref on the input to reset the focus to the first field after submit.
 	      this._ex.focus();
 	    }
+
+	    // Submits packaged workout obj to db as x-www-form data.
+
 	  }, {
 	    key: 'completeWorkout',
-	    value: function completeWorkout() {
-	      console.log(this.state.workout);
-
-	      $.post('/api/submitWorkout', JSON.stringify(this.state.workout), function (err, resp) {
-	        if (err) console.log(err);
-	        // This is how the docs say to do redirects. Does some sort of query-ish thing though and double-refreshes target page. :(
-	        _reactRouter.browserHistory.push('/user');
+	    value: function completeWorkout(e) {
+	      e.preventDefault();
+	      var postObj = {};
+	      postObj.workoutName = this.state.workoutName;
+	      postObj.exercises = this.state.workout;
+	      $.post('/api/createWorkout', postObj, function (err, resp) {
+	        if (err) {
+	          console.log('Post Error', err);
+	        };
 	      });
+	      _reactRouter.browserHistory.push('/user');
 	    }
 	  }, {
 	    key: 'render',
@@ -9428,7 +9455,12 @@
 	                  'label',
 	                  { className: 'text-left' },
 	                  'Workout Name:',
-	                  React.createElement('input', { type: 'text', placeholder: 'Workout Name', className: 'fat-width' })
+	                  React.createElement('input', {
+	                    type: 'text',
+	                    placeholder: 'Workout Name',
+	                    className: 'fat-width',
+	                    onChange: this.handleWorkoutChange
+	                  })
 	                ),
 	                React.createElement(
 	                  'table',
