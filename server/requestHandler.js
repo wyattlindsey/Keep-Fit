@@ -20,10 +20,13 @@ module.exports = {
     //  });
     // generate salt
     // hash password + salt
-    query.signUp();
+    query.signUp(); // TODO pass in req.username or so
     next();
   },
   getUser: function (req, res, next) {
+    // TODO submitWorkout should accept req.username
+    // and send 200 if works
+
     // convert to array syntax
     // call a query
     query.getUser('Carl', function(data){
@@ -32,15 +35,27 @@ module.exports = {
 
   },
   submitWorkout: function (req, res, next) {
+    // TODO submitWorkout should accept req.username
+    // and send 200 if works
     query.submitWorkout();
     next();
   },
+  createWorkout: function (req, res, next) {
+    // parse req data to be: workoutName, exerciseName, exerciseDescription
+    // possibly iterating through multiple exercises and
+    // call query.createWorkout()
+    query.createWorkout();
+    next();
+  },
   getWorkouts: function(req, res, next) {
+
     query.getWorkouts('All', function(data) {
       res.send(data);
     })
   },
     submitExercise: function (req, res, next) {
+      // TODO submitWorkout should accept req.workout
+      // and send 200 if works
       query.submitExercise();
       next();
     },

@@ -1,22 +1,24 @@
 var helpers = require('./helper.js'); // our custom middleware
 var requestHandler = require('./requestHandler');
 var morgan = require('morgan'); //<-- debugging
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var path = require('path');
 
 module.exports = function (app, express) {
 
   app.use(morgan()); //<-- debugging
-  //app.use(bodyParser.urlencoded()); <-- use for ajax post requests
+  app.use(bodyParser.urlencoded());
   app.use(express.static(path.join(__dirname, '../client')));
   //app.get('/',requestHandler.getIndex);
   app.get('/api/getUser',requestHandler.getUser);
   app.get('/api/signUp',requestHandler.signUp);
+  
   app.get('/api/submitWorkout', requestHandler.submitWorkout);
+  app.get('/api/createWorkout', requestHandler.createWorkout);
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
+
   app.get('/api/submitExercise', requestHandler.submitExercise);
   app.get('/api/getExercises', requestHandler.getExercises);
-
 
   //need to add this to handle direct addressing of routes.
   //will serve index.html which has our jsx linked for routing.
