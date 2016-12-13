@@ -21,20 +21,33 @@ module.exports = {
   submitWorkout: function (req, res, next) {
     // TODO submitWorkout should send 200 if works
     // confirm submitWorkout inputs below
+
     query.submitWorkout(req.headers.username, req.headers.workoutName);
-    next();
+    res.sendStatus(201);
   },
   createWorkout: function (req, res, next) {
     // parse req data to be: workoutName, exerciseName, exerciseDescription
     // possibly iterating through multiple exercises and
     // call query.createWorkout()
-    query.createWorkout(req.headers.username, req.headers.workoutName, req.headers.exerciseName);
-    next();
+    // userName, workoutName, exerciseName, weight, reps
+   console.log(req.body);
+    var userName = "Test1";
+    var workoutName = req.body.workoutName;
+    req.body.exercises.forEach(i=>{
+      var exerciseName = i.exercise;
+      var weight = i.weight;
+      var reps = i.reps;
+      query.createWorkout(userName, workoutName, exerciseName, weight, reps);
+    });
+    // query.createWorkout(userName, workoutName, 'exerciseName', 5, 10);
+    // res.head(201);
+    res.send("Everything's cool!");
+    // next();
   },
   getWorkouts: function(req, res, next) {
 
-    var username = req.headers.username;
-    query.getWorkouts(username, function(data) {
+    // var username = req.headers.username;
+    query.getWorkouts(function(data) {
 
       res.send(data);
     })

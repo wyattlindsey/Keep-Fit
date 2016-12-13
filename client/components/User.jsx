@@ -81,6 +81,18 @@ export default class User extends React.Component {
         ]
       }}
     ];
+
+    this.state = { data: []};
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+
+  componentDidMount() {
+    $.get('/api/getWorkouts', (data, err) => {
+      if (err) console.log(err);
+      this.setState({
+        data: data
+      });
+    });
   }
 
   render() {
@@ -106,10 +118,10 @@ export default class User extends React.Component {
             </Link>
             List of recent workouts goes here.
 
-            {this.data.map((i, k)=>{
+            {this.state.data.map((i, k)=>{
               return <div className="workout" key={k}>
-                      Date: {i.Workout.CreatedAt}
-                      Name: {i.Workout.Name}
+                      Date: {i.Date}
+                      Name: {i.name}
                     </div>
             })}
 
