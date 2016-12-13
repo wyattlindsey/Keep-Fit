@@ -6,6 +6,7 @@ var path = require('path');
 
 module.exports = function (app, express) {
   app.use(morgan()); //<-- debugging
+
   app.use(bodyParser.urlencoded()); //<-- use for ajax post requests
   app.use(express.static(path.join(__dirname, '../client')));
   //app.get('/',requestHandler.getIndex);
@@ -15,7 +16,6 @@ module.exports = function (app, express) {
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
   app.post('/api/submitExercise', requestHandler.submitExercise);
   app.get('/api/getExercises', requestHandler.getExercises);
-
 
   //need to add this to handle direct addressing of routes.
   //will serve index.html which has our jsx linked for routing.

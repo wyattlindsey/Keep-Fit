@@ -1,5 +1,5 @@
 var helper = require('./helper.js');
-var Promise = require('bluebird');
+//var Promise = require('bluebird');
 var server = require('./server');
 var path = require('path');
 var query = require('./db/query-modules.js');
@@ -11,21 +11,13 @@ module.exports = {
   },
   signUp: function (req, res, next) {
     // TODO: add salt and hash
-    // var cipher = Promise.promisify(bcrypt.hash);
-
-    // return cipher(req.password, null, null).bind(this)
-    //   .then(function(hash) {
-    //    this.password = hash;
-    //    //assume that this is async
-    //    next();
-    //  });
-
     // generate salt
     // hash password + salt
-    query.signUp();
+    query.signUp(); // TODO pass in req.username or so
     next();
   },
   getUser: function (req, res, next) {
+
     // convert to array syntax
     // call a query
     console.log(req.url);
@@ -35,17 +27,30 @@ module.exports = {
 
   },
   submitWorkout: function (req, res, next) {
+    // TODO submitWorkout should accept req.username
+    // and send 200 if works
     query.submitWorkout();
     res.sendStatus(201);
     //next();
   },
+  createWorkout: function (req, res, next) {
+    // parse req data to be: workoutName, exerciseName, exerciseDescription
+    // possibly iterating through multiple exercises and
+    // call query.createWorkout()
+    query.createWorkout();
+    next();
+  },
   getWorkouts: function(req, res, next) {
+
     var username = req.headers.username;
     query.getWorkouts(username, function(data) {
+
       res.send(data);
     })
   },
     submitExercise: function (req, res, next) {
+      // TODO submitWorkout should accept req.workout
+      // and send 200 if works
       query.submitExercise();
       next();
     },
@@ -54,8 +59,4 @@ module.exports = {
         res.send(data);
       })
     }
-//   getIndex: function (req, res, next) {
-//     res.sendFile(path.join(__dirname, '../client/index.html'));
-//     res.status(200);
-//   }
 };
