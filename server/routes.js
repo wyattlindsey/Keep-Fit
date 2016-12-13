@@ -11,6 +11,7 @@ module.exports = function (app, express) {
   app.use(bodyParser.urlencoded());
 
   app.use(express.static(path.join(__dirname, '../client')));
+
   //app.get('/',requestHandler.getIndex);
   app.get('/api/getUser',requestHandler.getUser);
   app.post('/api/signUp',requestHandler.signUp);
