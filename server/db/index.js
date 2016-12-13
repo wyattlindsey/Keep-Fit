@@ -17,6 +17,7 @@ var database = {
 
 var connection = mysql.createConnection(database.jawsDB);
 
+
 connection.connect();
 
 module.exports = connection;
