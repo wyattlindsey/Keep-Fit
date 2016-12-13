@@ -17,6 +17,7 @@ module.exports = function (app, express) {
 
   app.post('/api/createWorkout', requestHandler.createWorkout);
   app.post('/api/submitWorkout', requestHandler.submitWorkout);
+
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
 
   app.post('/api/submitExercise', requestHandler.submitExercise);

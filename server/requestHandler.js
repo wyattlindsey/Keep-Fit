@@ -43,6 +43,7 @@ module.exports = {
     // res.head(201);
     res.send("Everything's cool!");
     // next();
+
   },
   getWorkouts: function(req, res, next) {
 

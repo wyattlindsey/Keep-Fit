@@ -97,3 +97,4 @@ module.exports = {
 select * from Users_Workouts,Workouts_Exercises,Users_Workouts_Exercises,Workouts,Exercises where Users_Workouts.id_Users = (select id from Users where Users.Username = '?') and Workouts_Exercises.id = Users_Workouts_Exercises.id_Workouts_Exercises and E
 xercises.id = Workouts_Exercises.id_Exercises and Workouts.id = Workouts_Exercises.id_Workouts AND users_workouts.id_workouts = workouts_exercises.id_workouts
 */
+

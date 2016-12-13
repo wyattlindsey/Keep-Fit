@@ -27,6 +27,7 @@ From within the root directory:
 sudo npm install -g webpack
 npm install
 ```
+
 If you want to test out any mySQL queries follow the installation instructions here for [Mac](https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html) or here for [Windows](http://dev.mysql.com/doc/refman/5.7/en/windows-installation.html).
 
 #### List of Dependencies
