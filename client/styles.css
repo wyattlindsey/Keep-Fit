@@ -71,6 +71,10 @@ td {
   padding: 3px;
 }
 
+table {
+  width: 100%;
+}
+
 .plus-btn {
   padding: 1px 1px 2px 2px;
   cursor: pointer;
@@ -79,4 +83,8 @@ td {
   color: rgb(68, 37, 107);
   border: 2px solid rgb(68, 37, 107);
   border-radius: 2px;
+}
+
+.setDisplay:nth-child(even) {
+  background-color: rgb(213, 199, 238);
 }

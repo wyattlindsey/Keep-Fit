@@ -5,16 +5,15 @@ var bodyParser = require('body-parser');
 var path = require('path');
 
 module.exports = function (app, express) {
-
   app.use(morgan()); //<-- debugging
   app.use(bodyParser.urlencoded()); //<-- use for ajax post requests
   app.use(express.static(path.join(__dirname, '../client')));
   //app.get('/',requestHandler.getIndex);
   app.get('/api/getUser',requestHandler.getUser);
-  app.get('/api/signUp',requestHandler.signUp);
-  app.get('/api/submitWorkout', requestHandler.submitWorkout);
+  app.post('/api/signUp',requestHandler.signUp);
+  app.post('/api/submitWorkout', requestHandler.submitWorkout);
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
-  app.get('/api/submitExercise', requestHandler.submitExercise);
+  app.post('/api/submitExercise', requestHandler.submitExercise);
   app.get('/api/getExercises', requestHandler.getExercises);
 
 

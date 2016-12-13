@@ -36,7 +36,8 @@ module.exports = {
   },
   submitWorkout: function (req, res, next) {
     query.submitWorkout();
-    next();
+    res.sendStatus(201);
+    //next();
   },
   getWorkouts: function(req, res, next) {
     var username = req.headers.username;
