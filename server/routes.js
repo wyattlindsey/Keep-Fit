@@ -7,7 +7,10 @@ var path = require('path');
 module.exports = function (app, express) {
   app.use(morgan()); //<-- debugging
 
+
+  app.use(morgan()); //<-- debugging
   app.use(bodyParser.urlencoded()); //<-- use for ajax post requests
+
   app.use(express.static(path.join(__dirname, '../client')));
   //app.get('/',requestHandler.getIndex);
   app.get('/api/getUser',requestHandler.getUser);
