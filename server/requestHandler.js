@@ -4,20 +4,13 @@ var server = require('./server');
 var path = require('path');
 var query = require('./db/query-modules.js');
 // var bcrypt = require('bcrypt');
+
 module.exports = {
   logIn: function (req, res, next) {
 
   },
   signUp: function (req, res, next) {
     // TODO: add salt and hash
-    // var cipher = Promise.promisify(bcrypt.hash);
-
-    // return cipher(req.password, null, null).bind(this)
-    //   .then(function(hash) {
-    //    this.password = hash;
-    //    //assume that this is async
-    //    next();
-    //  });
     // generate salt
     // hash password + salt
     query.signUp(); // TODO pass in req.username or so
@@ -26,9 +19,6 @@ module.exports = {
   getUser: function (req, res, next) {
     // TODO submitWorkout should accept req.username
     // and send 200 if works
-
-    // convert to array syntax
-    // call a query
     query.getUser('Carl', function(data){
       res.send(data);
     });
@@ -48,8 +38,7 @@ module.exports = {
     next();
   },
   getWorkouts: function(req, res, next) {
-
-    query.getWorkouts('All', function(data) {
+    query.getWorkouts(req.headers.username, function(data) {
       res.send(data);
     })
   },

@@ -12,7 +12,7 @@ module.exports = function (app, express) {
   //app.get('/',requestHandler.getIndex);
   app.get('/api/getUser',requestHandler.getUser);
   app.get('/api/signUp',requestHandler.signUp);
-  
+
   app.get('/api/submitWorkout', requestHandler.submitWorkout);
   app.get('/api/createWorkout', requestHandler.createWorkout);
   app.get('/api/getWorkouts', requestHandler.getWorkouts);
