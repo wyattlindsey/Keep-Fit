@@ -2,3 +2,5 @@ node_modules
 www/bundle.js
 server/db/index.js
 server/db/schema.sql
+.floo
+.flooignore
