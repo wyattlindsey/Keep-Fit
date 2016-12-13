@@ -17,14 +17,10 @@ module.exports = {
     next();
   },
   getUser: function (req, res, next) {
-
-    // convert to array syntax
-    // call a query
-    console.log(req.url);
-    // query.getUser('Carl', function(data){
-    //   res.send(data);
-    // });
-
+    // TODO submitWorkout should send 200 if it works
+    query.getUser(req.headers.username, function(data){
+      res.send(data);
+    });
   },
   submitWorkout: function (req, res, next) {
     // TODO submitWorkout should accept req.username
