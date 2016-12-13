@@ -9146,204 +9146,399 @@
 /* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _reactRouter = __webpack_require__(2);
 
-	exports.default = function () {
-	  return React.createElement(
-	    "div",
-	    { className: "container" },
-	    React.createElement(
-	      "div",
-	      { className: "col-sm-6" },
-	      React.createElement(
-	        "div",
-	        { className: "profile" },
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var User = function (_React$Component) {
+	  _inherits(User, _React$Component);
+
+	  function User(props) {
+	    _classCallCheck(this, User);
+
+	    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+
+	    _this.data = [{ Workout: {
+	        CreatedAt: '1234565',
+	        Name: 'fullBody',
+	        Exercises: [{
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 10
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 9
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 8
+	        }]
+	      } }, { Workout: {
+	        CreatedAt: '1234565',
+	        Name: 'fullBody',
+	        Exercises: [{
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 10
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 9
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 8
+	        }]
+	      } }, { Workout: {
+	        CreatedAt: '1234565',
+	        Name: 'fullBody',
+	        Exercises: [{
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 10
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 9
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 8
+	        }]
+	      } }, { Workout: {
+	        CreatedAt: '1234565',
+	        Name: 'fullBody',
+	        Exercises: [{
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 10
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 9
+	        }, {
+	          name: 'Bench Press',
+	          weight: 135,
+	          reps: 8
+	        }]
+	      } }];
+	    return _this;
+	  }
+
+	  _createClass(User, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'container' },
 	        React.createElement(
-	          "div",
-	          null,
-	          React.createElement("img", { className: "pull-left profile-img", src: "http://assets.schwarzenegger.com/images/img-2.jpg" }),
+	          'div',
+	          { className: 'col-sm-6' },
 	          React.createElement(
-	            "b",
-	            null,
-	            "Axeman Muscleface"
+	            'div',
+	            { className: 'profile' },
+	            React.createElement(
+	              'div',
+	              null,
+	              React.createElement('img', { className: 'pull-left profile-img', src: 'http://assets.schwarzenegger.com/images/img-2.jpg' }),
+	              React.createElement(
+	                'b',
+	                null,
+	                'Axeman Muscleface'
+	              )
+	            ),
+	            React.createElement(
+	              'div',
+	              null,
+	              'Some data goes here, maybe last workout, or friends or something. Activated charcoal helvetica irony tote bag adipisicing. Kickstarter tattooed accusamus selvage, brooklyn coloring book la croix. Echo park typewriter bushwick tumeric poutine, disrupt nesciunt. Tempor 3 wolf moon dolore ea master cleanse, messenger bag jianbing seitan. Nulla eiusmod nisi, tattooed assumenda franzen venmo fashion axe ethical pop-up woke heirloom. Vaporware shabby chic wayfarers activated charcoal brooklyn. Ugh crucifix messenger bag nisi pork belly.'
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'graphs' },
+	            'Graphs go here:',
+	            React.createElement(
+	              'div',
+	              null,
+	              React.createElement('img', { src: 'http://www.learnersdictionary.com/media/ld/images/legacy_print_images/bar_graph.gif' })
+	            )
 	          )
 	        ),
 	        React.createElement(
-	          "div",
-	          null,
-	          "Some data goes here, maybe last workout, or friends or something. Activated charcoal helvetica irony tote bag adipisicing. Kickstarter tattooed accusamus selvage, brooklyn coloring book la croix. Echo park typewriter bushwick tumeric poutine, disrupt nesciunt. Tempor 3 wolf moon dolore ea master cleanse, messenger bag jianbing seitan. Nulla eiusmod nisi, tattooed assumenda franzen venmo fashion axe ethical pop-up woke heirloom. Vaporware shabby chic wayfarers activated charcoal brooklyn. Ugh crucifix messenger bag nisi pork belly."
+	          'div',
+	          { className: 'col-sm-6' },
+	          React.createElement(
+	            'div',
+	            { className: 'workouts' },
+	            React.createElement(
+	              _reactRouter.Link,
+	              { className: 'add-workout text-center text-white', to: '/workout' },
+	              'Add a New Workout!'
+	            ),
+	            'List of recent workouts goes here.',
+	            this.data.map(function (i, k) {
+	              return React.createElement(
+	                'div',
+	                { className: 'workout', key: k },
+	                'Date: ',
+	                i.Workout.CreatedAt,
+	                'Name: ',
+	                i.Workout.Name
+	              );
+	            })
+	          )
 	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "graphs" },
-	        "Graphs go here:",
-	        React.createElement(
-	          "div",
-	          null,
-	          React.createElement("img", { src: "http://www.learnersdictionary.com/media/ld/images/legacy_print_images/bar_graph.gif" })
-	        )
-	      )
-	    ),
-	    React.createElement(
-	      "div",
-	      { className: "col-sm-6" },
-	      React.createElement(
-	        "div",
-	        { className: "workouts" },
-	        React.createElement(
-	          "a",
-	          { className: "add-workout text-center text-white" },
-	          "Add a New Workout!"
-	        ),
-	        "List of recent workouts goes here.",
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "workout" },
-	          "Date: Jan 1st. Workout: Legs"
-	        )
-	      )
-	    )
-	  );
-	};
+	      );
+	    }
+	  }]);
+
+	  return User;
+	}(React.Component);
+	//
+	// export default () =>
+
+
+	exports.default = User;
 
 /***/ },
 /* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _reactRouter = __webpack_require__(2);
 
-	exports.default = function () {
-	  return React.createElement(
-	    "div",
-	    { className: "container" },
-	    React.createElement(
-	      "div",
-	      { className: "row" },
-	      React.createElement(
-	        "div",
-	        { className: "col-sm-6 col-sm-offset-3 signup-form text-center" },
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Workout = function (_React$Component) {
+	  _inherits(Workout, _React$Component);
+
+	  function Workout(props) {
+	    _classCallCheck(this, Workout);
+
+	    var _this = _possibleConstructorReturn(this, (Workout.__proto__ || Object.getPrototypeOf(Workout)).call(this, props));
+
+	    _this.state = {
+	      workout: [],
+	      exercise: '',
+	      weight: 0,
+	      reps: 0
+	    };
+
+	    _this.addExercise = _this.addExercise.bind(_this);
+	    _this.handleExerciseChange = _this.handleExerciseChange.bind(_this);
+	    _this.handleWeightChange = _this.handleWeightChange.bind(_this);
+	    _this.handleRepChange = _this.handleRepChange.bind(_this);
+	    _this.completeWorkout = _this.completeWorkout.bind(_this);
+
+	    return _this;
+	  }
+
+	  _createClass(Workout, [{
+	    key: 'handleExerciseChange',
+	    value: function handleExerciseChange(e) {
+	      this.setState({ exercise: e.target.value });
+	    }
+	  }, {
+	    key: 'handleWeightChange',
+	    value: function handleWeightChange(e) {
+	      this.setState({ weight: e.target.value });
+	    }
+	  }, {
+	    key: 'handleRepChange',
+	    value: function handleRepChange(e) {
+	      this.setState({ reps: e.target.value });
+	    }
+
+	    // This is a bit gross. Shouldn't directly access state like this, but wanted to manage multiple sets and this works. Forced update because we're using state incorrectly.
+
+	  }, {
+	    key: 'addExercise',
+	    value: function addExercise() {
+	      var set = {
+	        exercise: this.state.exercise,
+	        weight: this.state.weight,
+	        reps: this.state.reps
+	      };
+	      this.state.workout.push(set);
+	      this.forceUpdate();
+	      // this uses the ref on the input to reset the focus to the first field after submit.
+	      this._ex.focus();
+	    }
+	  }, {
+	    key: 'completeWorkout',
+	    value: function completeWorkout() {
+	      console.log(this.state.workout);
+
+	      $.post('/api/submitWorkout', JSON.stringify(this.state.workout), function (err, resp) {
+	        if (err) console.log(err);
+	        // This is how the docs say to do redirects. Does some sort of query-ish thing though and double-refreshes target page. :(
+	        _reactRouter.browserHistory.push('/user');
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return React.createElement(
+	        'div',
+	        { className: 'container' },
 	        React.createElement(
-	          "h1",
-	          null,
-	          "Add Workout!"
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "col-sm-8 col-sm-offset-2" },
+	          'div',
+	          { className: 'row' },
 	          React.createElement(
-	            "form",
-	            null,
+	            'div',
+	            { className: 'col-sm-6 col-sm-offset-3 signup-form text-center' },
 	            React.createElement(
-	              "label",
-	              { className: "text-left" },
-	              "Workout Name:",
-	              React.createElement("input", { type: "text", placeholder: "Workout Name", className: "fat-width" })
+	              'h1',
+	              null,
+	              'Add Workout!'
 	            ),
 	            React.createElement(
-	              "button",
-	              { type: "submit", value: "Add Workout", className: "btn btn-default margin-top-10" },
-	              "Add Workout"
-	            )
-	          ),
-	          React.createElement(
-	            "form",
-	            null,
-	            React.createElement(
-	              "table",
-	              null,
+	              'div',
+	              { className: 'col-sm-8 col-sm-offset-2' },
 	              React.createElement(
-	                "tbody",
+	                'form',
 	                null,
 	                React.createElement(
-	                  "tr",
+	                  'label',
+	                  { className: 'text-left' },
+	                  'Workout Name:',
+	                  React.createElement('input', { type: 'text', placeholder: 'Workout Name', className: 'fat-width' })
+	                ),
+	                React.createElement(
+	                  'table',
 	                  null,
 	                  React.createElement(
-	                    "td",
+	                    'thead',
 	                    null,
-	                    "Exercise:"
+	                    React.createElement(
+	                      'tr',
+	                      null,
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        'Exercise'
+	                      ),
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        'Weight'
+	                      ),
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        'Reps'
+	                      )
+	                    )
 	                  ),
 	                  React.createElement(
-	                    "td",
+	                    'tbody',
 	                    null,
-	                    React.createElement("input", { type: "text", placeholder: "Exercise" })
-	                  ),
-	                  React.createElement(
-	                    "td",
-	                    null,
-	                    React.createElement("input", { type: "number", className: "thin-width" })
-	                  ),
-	                  React.createElement(
-	                    "td",
-	                    null,
-	                    React.createElement("input", { type: "number", className: "thin-width" })
-	                  ),
-	                  React.createElement(
-	                    "td",
-	                    null,
-	                    React.createElement("span", { className: "glyphicon glyphicon-plus plus-btn" })
+	                    this.state.workout.map(function (i, k) {
+	                      return React.createElement(
+	                        'tr',
+	                        { key: k, className: 'setDisplay' },
+	                        React.createElement(
+	                          'td',
+	                          null,
+	                          i.exercise
+	                        ),
+	                        React.createElement(
+	                          'td',
+	                          null,
+	                          i.weight
+	                        ),
+	                        React.createElement(
+	                          'td',
+	                          null,
+	                          i.reps
+	                        ),
+	                        React.createElement(
+	                          'td',
+	                          null,
+	                          ' '
+	                        )
+	                      );
+	                    }),
+	                    React.createElement(
+	                      'tr',
+	                      null,
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        React.createElement('input', { type: 'text', ref: function ref(input) {
+	                            return _this2._ex = input;
+	                          }, autoFocus: true, value: this.state.exercise, onChange: this.handleExerciseChange })
+	                      ),
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        React.createElement('input', { type: 'number', className: 'thin-width', value: this.state.weight, onChange: this.handleWeightChange })
+	                      ),
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        React.createElement('input', { type: 'number', className: 'thin-width', value: this.state.reps, onChange: this.handleRepChange })
+	                      ),
+	                      React.createElement(
+	                        'td',
+	                        null,
+	                        React.createElement(
+	                          'a',
+	                          { href: '#', onClick: this.addExercise },
+	                          'Add set'
+	                        )
+	                      )
+	                    )
 	                  )
+	                ),
+	                React.createElement(
+	                  'button',
+	                  {
+	                    type: 'submit',
+	                    value: 'Add Workout',
+	                    className: 'btn btn-default margin-top-10',
+	                    onClick: this.completeWorkout
+	                  },
+	                  'Complete Workout'
 	                )
 	              )
 	            )
 	          )
 	        )
-	      )
-	    )
-	  );
-	};
+	      );
+	    }
+	  }]);
+
+	  return Workout;
+	}(React.Component);
+
+	exports.default = Workout;
 
 /***/ }
 /******/ ]);
