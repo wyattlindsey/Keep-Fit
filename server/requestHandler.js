@@ -28,9 +28,10 @@ module.exports = {
   getUser: function (req, res, next) {
     // convert to array syntax
     // call a query
-    query.getUser('Carl', function(data){
-      res.send(data);
-    });
+    console.log(req.url);
+    // query.getUser('Carl', function(data){
+    //   res.send(data);
+    // });
 
   },
   submitWorkout: function (req, res, next) {
@@ -38,7 +39,8 @@ module.exports = {
     next();
   },
   getWorkouts: function(req, res, next) {
-    query.getWorkouts('All', function(data) {
+    var username = req.headers.username;
+    query.getWorkouts(username, function(data) {
       res.send(data);
     })
   },
