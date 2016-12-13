@@ -17,18 +17,21 @@ module.exports = {
     next();
   },
   getUser: function (req, res, next) {
-    // TODO submitWorkout should accept req.username
-    // and send 200 if works
-    query.getUser('Carl', function(data){
-      res.send(data);
-    });
+
+    // convert to array syntax
+    // call a query
+    console.log(req.url);
+    // query.getUser('Carl', function(data){
+    //   res.send(data);
+    // });
 
   },
   submitWorkout: function (req, res, next) {
     // TODO submitWorkout should accept req.username
     // and send 200 if works
     query.submitWorkout();
-    next();
+    res.sendStatus(201);
+    //next();
   },
   createWorkout: function (req, res, next) {
     // parse req data to be: workoutName, exerciseName, exerciseDescription
@@ -38,7 +41,10 @@ module.exports = {
     next();
   },
   getWorkouts: function(req, res, next) {
-    query.getWorkouts(req.headers.username, function(data) {
+
+    var username = req.headers.username;
+    query.getWorkouts(username, function(data) {
+
       res.send(data);
     })
   },
