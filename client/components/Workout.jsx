@@ -56,6 +56,7 @@ export default class Workout extends React.Component {
     postObj.exercises = this.state.workout;
     $.post('/api/createWorkout', postObj, (err, resp)=>{
       if (err) {console.log('Post Error', err)};
+
     });
     browserHistory.push('/user');
 
