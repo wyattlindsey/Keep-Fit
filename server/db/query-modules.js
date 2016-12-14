@@ -7,7 +7,7 @@ module.exports = {
   //    : integrate authentication
   signUp: function (username) {
     db.query("insert into Users (Username, Hash, Salt) values (?,'Ginger','Spells')",['Sample'], function(error, data) {
-        if(error) {console.log(error);}
+        if(error) {console.log(error);} else {console.log('Success inputting into Users with', data)}
       });
     },
     // Get specific user.
