@@ -6,14 +6,14 @@ module.exports = {
   // TODO: check if name already exists
   //    : integrate authentication
   signUp: function (username) {
-    db.query("insert into Users (Username, Hash, Salt) values (?,'Ginger','Spells')",['Test1'], function(error, data) {
+    db.query("insert into Users (Username, Hash, Salt) values (?,'Ginger','Spells')",['Sample'], function(error, data) {
         if(error) {console.log(error);}
       });
     },
     // Get specific user.
     // Useful perhaps as signUp helper to determining if username taken.
   getUser: function (username,cb) {
-    db.query('Select * from Users where Users.Username = ?',['Test1'], function (error, results, fields) {
+    db.query('Select * from Users where Users.Username = ?',['Sample'], function (error, results, fields) {
       if(error) {console.log(error);}
       // use cb from requestHandler to parse results
       cb(results);
@@ -69,7 +69,7 @@ module.exports = {
        db.query('select Workouts.name, Users_Workouts.Date from Users_Workouts, Workouts where Users_Workouts.id_Workouts = Workouts.id and Users_Workouts.id_Users = (select id from Users where Users.Username = ?)',[username], function(error, results) {cb(results);});
      } else {
       // db.query('select Workouts.name, Users_Workouts.Date from Users_Workouts, Workouts where Users_Workouts.id_Workouts = Workouts.id and Users_Workouts.id_Users = (select id from Users where Users.Username = ?)',["**USERNAME HERE**"], function(error, results) {cb(results);});
-      db.query('select distinct Workouts.name, Users_Workouts.Date from Users_Workouts, Workouts where Users_Workouts.id_Workouts = Workouts.id and Users_Workouts.id_Users = (select id from Users where Users.Username = ?)',["Test1"], function(error, results) {cb(results);});
+      db.query('select distinct Workouts.name, Users_Workouts.Date from Users_Workouts, Workouts where Users_Workouts.id_Workouts = Workouts.id and Users_Workouts.id_Users = (select id from Users where Users.Username = ?)',["Sample"], function(error, results) {cb(results);});
       // db.query('select * from Users_Workouts_Exercises', function(error, results) {cb(results);});
      }
    },
