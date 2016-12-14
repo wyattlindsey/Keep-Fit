@@ -9,7 +9,9 @@ module.exports = {
   logIn: function (req, res, next) {},
   signUp: function (req, res, next) {
     // TODO: add salt and hash
+    console.log('RequestHandler username');
     query.signUp('Sample');
+    console.log('RequestHandler after sign-up');
     next();
   },
   getUser: function (req, res, next) {
