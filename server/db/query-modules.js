@@ -13,7 +13,7 @@ module.exports = {
     // Get specific user.
     // Useful perhaps as signUp helper to determining if username taken.
   getUser: function (username,cb) {
-    db.query('Select * from Users where Users.Username = ?',['HermioneGranger'], function (error, results, fields) {
+    db.query('Select * from Users where Users.Username = ?',['Test1'], function (error, results, fields) {
       if(error) {console.log(error);}
       // use cb from requestHandler to parse results
       cb(results);
