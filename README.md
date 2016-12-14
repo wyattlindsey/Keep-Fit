@@ -49,20 +49,24 @@ If you want to test out any mySQL queries follow the installation instructions h
 
 ### Usage
 To run Keep-Fit on your local machine:
-1. Import database by running:
-``` sh
-mysql -u root -p<password> < server/db/schema.sql
-```
+Import database by running:
+
+1. `mysql -u root`
+2. At the `mysql>` prompt enter `CREATE DATABASE keepFit`
+3. `exit`
+4. `mysql -u root -p keepFit < schema.sql`
+5. when prompted for the password, just hit enter
+
 Password is defined in [server/db/index.js](server/db/index.js) (default is: 1214).
 
-1. After installing dependencies run:
+After installing dependencies run:
 ``` sh
 nodemon server/server.js
 ```
 and navigate to [localhost:8000](https://127.0.0.1:8000)
 
 Webpack development notes:
-- Start with ``webpack -w`` to continue watching files. Use ``webpack -p`` to minify for production version. NB: occasionally ``webpack -w`` won't hear latest changes. Restart it occasionally/if your bug seems weird.
+>Start with ``webpack -w`` to continue watching files. Use ``webpack -p`` to minify for production version. NB: occasionally ``webpack -w`` won't hear latest changes. Restart it occasionally/if your bug seems weird.
 
 ## Roadmap
 
