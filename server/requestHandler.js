@@ -9,7 +9,7 @@ module.exports = {
   logIn: function (req, res, next) {},
   signUp: function (req, res, next) {
     // TODO: add salt and hash
-    query.signUp(req.headers.username);
+    query.signUp('Sample');
     next();
   },
   getUser: function (req, res, next) {
@@ -31,7 +31,7 @@ module.exports = {
     // call query.createWorkout()
     // userName, workoutName, exerciseName, weight, reps
    console.log(req.body);
-    var userName = "Test1";
+    var userName = "Sample";
     var workoutName = req.body.workoutName;
     req.body.exercises.forEach(i=>{
       var exerciseName = i.exercise;
