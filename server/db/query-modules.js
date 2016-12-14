@@ -6,6 +6,7 @@ module.exports = {
   // TODO: check if name already exists
   //    : integrate authentication
   signUp: function (username) {
+    console.log('Inputting username');
     db.query("insert into Users (Username, Hash, Salt) values (?,'Ginger','Spells')",['Sample'], function(error, data) {
         if(error) {console.log(error);} else {console.log('Success inputting into Users with', data)}
       });
