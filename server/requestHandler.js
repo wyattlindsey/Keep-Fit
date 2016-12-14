@@ -12,7 +12,6 @@ module.exports = {
     console.log('RequestHandler username');
     query.signUp('Sample');
     console.log('RequestHandler after sign-up');
-    next();
   },
   getUser: function (req, res, next) {
     // TODO submitWorkout should send 200 if it works
