@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var database = {
   local: {
       user: 'root',
-      password: '1214',
+      password: '',
       database: 'keepFit'
   },
   jawsDB: {
@@ -15,7 +15,7 @@ var database = {
   }
 }
 
-var connection = mysql.createConnection(database.jawsDB);
+var connection = mysql.createConnection(database.local);
 
 
 connection.connect();
