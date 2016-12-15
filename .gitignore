@@ -7,3 +7,5 @@ server/db/schema.sql
 .idea/
 server/npm-debug.log
 client/bundle.js
+server/db
+.gitattributes
