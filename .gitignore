@@ -6,3 +6,4 @@ server/db/schema.sql
 .flooignore
 .idea/
 server/npm-debug.log
+client/bundle.js
