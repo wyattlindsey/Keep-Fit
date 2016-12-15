@@ -31,15 +31,19 @@ module.exports = {
     // possibly iterating through multiple exercises and
     // call query.createWorkout()
     // userName, workoutName, exerciseName, weight, reps
-   console.log(req.body);
     var userName = "Sample";
+
     var workoutName = req.body.workoutName;
-    req.body.exercises.forEach(i=>{
-      var exerciseName = i.exercise;
-      var weight = i.weight;
-      var reps = i.reps;
-      query.createWorkout(userName, workoutName, exerciseName, weight, reps);
-    });
+
+    if (Array.isArray(req.body.exercises)) {
+      req.body.exercises.forEach((i) => {
+        var exerciseName = i.exercise;
+        var weight = i.weight;
+        var reps = i.reps;
+        query.createWorkout(userName, workoutName, exerciseName, weight, reps);
+      });
+    }
+
     // query.createWorkout(userName, workoutName, 'exerciseName', 5, 10);
     // res.head(201);
     res.send("Everything's cool!");
