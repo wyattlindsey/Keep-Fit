@@ -19,7 +19,7 @@ export default NewWorkout extends React.Component {
         <form>
           <FormGroup>
             <FormControl>
-              <div>Hello</div>
+              <div>Hello...</div>
             </FormControl>
           </FormGroup>
         </form>
