@@ -54,10 +54,10 @@ export default class Running extends React.Component {
   completeWorkout(e) {
     e.preventDefault();
     var newWorkout = {};
-    // newWorkout.workoutType = 'weight-lifting';
+    newWorkout.type = 'running';
     newWorkout.workoutName = this.state.workoutName;
     newWorkout.exercise = this.state.workout;
-    $.post('/api/createWorkout', newWorkout, (err, resp)=>{
+    $.post('/api/users/${userId}/workouts', newWorkout, (err, resp)=>{
       if (err) {console.log('Huzahhh!', err)};
     });
     browserHistory.push('/user');

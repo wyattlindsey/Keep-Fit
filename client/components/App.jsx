@@ -22,9 +22,6 @@ const App = () => (
   <div>
     <div className="container">
       <div>
-        Hi I'm stateless but exported!!
-      </div>
-      <div>
         <Link to="/signup">Click here to go to signup</Link>
       </div>
       <div>
@@ -35,7 +32,7 @@ const App = () => (
       </div>
       <div>
         <Link to="/heatmap">Click here to go to Heatmap</Link>
-        <Link to="/running">Click here to go to Running</Link>
+        <Link to="workout/running">Click here to go to Running</Link>
       </div>
     </div>
   </div>
@@ -48,6 +45,6 @@ ReactDOM.render((
     <Route path='/user' component={User}/>
     <Route path='/workout' component={Workout}/>
     <Route path='/heatmap' component={HeatMap}/>
-    <Route path='/running' component={Running}/>
+    <Route path='/workout/running' component={Running}/>
   </Router>
 ), document.getElementById('app'));
