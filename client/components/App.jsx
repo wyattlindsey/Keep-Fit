@@ -16,6 +16,8 @@ import Signup from './Signup.jsx';
 import User from './User.jsx';
 import Workout from './Workout.jsx';
 import HeatMap from './HeatMap.jsx';
+import Running from './Running.jsx';
+
 const App = () => (
   <div>
     <div className="container">
@@ -33,6 +35,7 @@ const App = () => (
       </div>
       <div>
         <Link to="/heatmap">Click here to go to Heatmap</Link>
+        <Link to="/running">Click here to go to Running</Link>
       </div>
     </div>
   </div>
@@ -45,5 +48,6 @@ ReactDOM.render((
     <Route path='/user' component={User}/>
     <Route path='/workout' component={Workout}/>
     <Route path='/heatmap' component={HeatMap}/>
+    <Route path='/running' component={Running}/>
   </Router>
 ), document.getElementById('app'));

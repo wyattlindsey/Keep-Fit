@@ -1,6 +1,6 @@
 import { Link, browserHistory }from 'react-router';
 
-export default class Workout extends React.Component {
+export default class Running extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
