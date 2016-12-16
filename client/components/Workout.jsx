@@ -4,11 +4,11 @@ export default class Workout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      workout: [],
+      workoutName: '',
       exercise: '',
       weight: 0,
       reps: 0,
-      workoutName: ''
+      exercises: []
     };
 
     this.addExercise = this.addExercise.bind(this);
@@ -42,9 +42,9 @@ export default class Workout extends React.Component {
       weight: this.state.weight,
       reps: this.state.reps
     };
-    var workout = this.state.workout.slice();
-    workout.push(set);
-    this.setState({ workout: workout });
+    var exercises = this.state.exercises.slice();
+    exercises.push(set);
+    this.setState({ exercises: exercises });
     // this.forceUpdate();
     // this uses the ref on the input to reset the focus to the first field after submit.
     this._ex.focus();
@@ -54,11 +54,15 @@ export default class Workout extends React.Component {
   completeWorkout(e) {
     e.preventDefault();
     var newWorkout = {};
-    // newWorkout.workoutType = 'weight-lifting';
+    newWorkout.workoutType = 'weight-lifting';
     newWorkout.workoutName = this.state.workoutName;
-    newWorkout.exercise = this.state.workout;
-    $.post('/api/createWorkout', newWorkout, (err, resp)=>{
-      if (err) {console.log('Huzahhh!', err)};
+    newWorkout.exercises = this.state.exercises;
+    $.post('/users/${userId}/workouts', newWorkout, (err, resp)=>{
+      if(err) {
+        console.log('Your workout cannot be submitted at this time. ' +  err);
+      } else {
+        console.log('The following workout has been submitted: ' + resp);
+      }
     });
     browserHistory.push('/user');
   }
