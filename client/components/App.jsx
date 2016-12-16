@@ -15,12 +15,12 @@ import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import Signup from './Signup.jsx';
 import User from './User.jsx';
 import Workout from './Workout.jsx';
-
+import HeatMap from './HeatMap.jsx';
 const App = () => (
   <div>
     <div className="container">
       <div>
-        Hi I'm stateless but exported!
+        Hi I'm stateless but exported!!
       </div>
       <div>
         <Link to="/signup">Click here to go to signup</Link>
@@ -30,6 +30,9 @@ const App = () => (
       </div>
       <div>
         <Link to="/workout">Click here to go to Workout</Link>
+      </div>
+      <div>
+        <Link to="/heatmap">Click here to go to Heatmap</Link>
       </div>
     </div>
   </div>
@@ -41,5 +44,6 @@ ReactDOM.render((
     <Route path='/signup' component={Signup}/>
     <Route path='/user' component={User}/>
     <Route path='/workout' component={Workout}/>
+    <Route path='/heatmap' component={HeatMap}/>
   </Router>
 ), document.getElementById('app'));
