@@ -37,13 +37,15 @@ export default class Workout extends React.Component {
 
   // This is a bit gross. Shouldn't directly access state like this, but wanted to manage multiple sets and this works. Forced update because we're using state incorrectly.
   addExercise() {
-    let set = {
+    var set = {
       exercise: this.state.exercise,
       weight: this.state.weight,
       reps: this.state.reps
     };
-    this.state.workout.push(set);
-    this.forceUpdate();
+    var workout = this.state.workout.slice();
+    workout.push(set);
+    this.setState({ workout: workout });
+    // this.forceUpdate();
     // this uses the ref on the input to reset the focus to the first field after submit.
     this._ex.focus();
   }
@@ -51,6 +53,7 @@ export default class Workout extends React.Component {
   // Submits packaged workout obj to db as x-www-form data.
   completeWorkout(e) {
     e.preventDefault();
+<<<<<<< 3247a0fe983731cd52b5ed8c5cee59b85cfdadf6
     var postObj = {};
     postObj.workoutName = this.state.workoutName;
     postObj.exercises = this.state.workout;
@@ -58,9 +61,16 @@ export default class Workout extends React.Component {
     $.post('/api/createWorkout', postObj, (err, resp)=>{
       if (err) {console.log('Post Error', err)};
 
+=======
+    var newWorkout = {};
+    // newWorkout.workoutType = 'weight-lifting';
+    newWorkout.workoutName = this.state.workoutName;
+    newWorkout.exercise = this.state.workout;
+    $.post('/api/createWorkout', newWorkout, (err, resp)=>{
+      if (err) {console.log('Huzahhh!', err)};
+>>>>>>> Edit Workout.jsx
     });
     browserHistory.push('/user');
-
   }
 
   render() {
