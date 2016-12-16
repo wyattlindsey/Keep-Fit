@@ -1,76 +1,146 @@
 const Promise = require('bluebird');
 const User = require('./userModel');
+//const jwt = require('jwt-simple');
+//const session = require('express-session');
+//var bcrypt = require('bcrypt-nodejs');
+var SALT_WORK_FACTOR = 10;
+
+
+//utility functions------------------------------------
+///////////////////////////
+
+var isLoggedIn = function(req) {
+  return req.session ? !!req.session.user : false;
+};
+
+var checkUser = function(req, res, next){
+  if (!isLoggedIn(req)) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
+
+///////////////////////////
+//-----------------------------------------------------
+
 
 module.exports = {
-  //Adds a user's routine to the Routine table
-  addARoutine: function (req, res, next) {
-    Models.Routine.build({
-      name: req.body.name,
-      description: req.body.description,
-      start_time: req.body.start_time,
-      end_time: req.body.end_time,
-      repeat: req.body.repeat,
-      completed: req.body.completed
-    }).save()
-    .then(function(){
-      res.status(201).send('Successfully created routine!')
-    })
-    .catch(function(error){
-      res.status(404).send(error);
-    })
+    signin: function (req, res, next) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    User.findOne({username: username})
+      .then(function(user) {
+        if (!user) {
+          res.redirect('/login');
+        } else {
+          bcrypt.compare(password, user.get('password'), function(err, match) {
+            if (match) {
+              var token = jwt.encode(user, 'secret');
+              res.json({token: token});
+            } else {
+              res.redirect('/login');
+            }
+          });
+        }
+    });
+
   },
 
-  //Gets the routines for the current user
-  getMyRoutines: function(req, res, next) {
+  signup: function (req, res, next) {
+  var username = req.body.username;
+  var password = req.body.password;
 
-    Models.Routine.findAll({
-      where: {
-        userId: req.params.userId
+  User.create({ username: username })
+    .fetch()
+    .then(function(user) {
+      if (!user) {
+        bcrypt.hash(password, null, null, function(err, hash) {
+          Users.create({
+            username: username,
+            password: hash
+          }).then(function(user) {
+              createSession(req, res, user);
+          });
+        });
+      } else {
+        console.log('Account already exists');
+        res.redirect('/signup');
       }
-    })
-    .then(function(routines){
-      res.status(200).json(routines);
-    })
-    .catch(function(error) {
-      res.send(error);
     });
+  },
+
+
+  checkAuth: function (req, res, next) {
+    // checking to see if the user is authenticated
+    // grab the token in the header is any
+    // then decode the token, which we end up being the user object
+    // check to see if that user exists in the database
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token'));
+    } else {
+      var user = jwt.decode(token, 'secret');
+      findUser({username: user.username})
+        .then(function (foundUser) {
+          if (foundUser) {
+            res.send(200);
+          } else {
+            res.send(401);
+          }
+        })
+        .fail(function (error) {
+          next(error);
+        });
+    }
+  },
+
+
+  //Gets the routines for the current user
+  getAllUsers: function(req, res, next) {
+
+
+    // .then(function(routines){
+    //   res.status(200).json(routines);
+    // })
+    // .catch(function(error) {
+    //   res.send(error);
+    // });
   },
 
   //Gets a single routine for a user
-  getARoutine: function(req, res, next) {
-    Models.Routine.findAll({
-      where: {
-        id: req.params.routineId,
-        userId: req.params.userId
-      }
-    })
-    .then(function(routine){
-      console.log(routine);
-      res.status(200).json(routine);
-    })
-    .catch(function(error) {
-      res.send(error);
-    });
+  updateUser: function(req, res, next) {
+
+
+    // .then(function(routine){
+    //   console.log(routine);
+    //   res.status(200).json(routine);
+    // })
+    // .catch(function(error) {
+    //   res.send(error);
+    // });
   },
 
   //Deletes a user's routine from the Routine table
-  deleteARoutine: function(req, res, next) {
-    Models.Routine.destroy({
-      where: {
-        id: req.params.routineId,
-        userId: req.params.userId
-      }
-    })
-    .then(function() {
-      res.status(200).send('Routine successfully deleted!')
-    })
-    .catch(function(error){
-      res.send(error);
-    });
+  deleteUser: function(req, res, next) {
+
+    // .then(function() {
+    //   res.status(200).send('Routine successfully deleted!')
+    // })
+    // .catch(function(error){
+    //   res.send(error);
+    // });
   },
 
-  updateARoutine: function(req, res, next) {
-    //Syntax for this might be tricky, as we have to dynamically
-    //update a user-specified routine property.
+  addUser: function(req, res, next) {
+
+    // .then(function() {
+    //   res.status(200).send('Routine successfully deleted!')
+    // })
+    // .catch(function(error){
+    //   res.send(error);
+    // });
   },
+
 }
