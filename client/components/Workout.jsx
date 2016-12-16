@@ -53,22 +53,12 @@ export default class Workout extends React.Component {
   // Submits packaged workout obj to db as x-www-form data.
   completeWorkout(e) {
     e.preventDefault();
-<<<<<<< 3247a0fe983731cd52b5ed8c5cee59b85cfdadf6
-    var postObj = {};
-    postObj.workoutName = this.state.workoutName;
-    postObj.exercises = this.state.workout;
-    console.log(postObj.exercises)
-    $.post('/api/createWorkout', postObj, (err, resp)=>{
-      if (err) {console.log('Post Error', err)};
-
-=======
     var newWorkout = {};
     // newWorkout.workoutType = 'weight-lifting';
     newWorkout.workoutName = this.state.workoutName;
     newWorkout.exercise = this.state.workout;
     $.post('/api/createWorkout', newWorkout, (err, resp)=>{
       if (err) {console.log('Huzahhh!', err)};
->>>>>>> Edit Workout.jsx
     });
     browserHistory.push('/user');
   }
