@@ -1,6 +1,6 @@
 # Local files
-./client/bundle.js
-./server/db
+client/bundle.js
+server/db
 .idea/
 
 # Logs
@@ -50,3 +50,5 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+.gitattributes
