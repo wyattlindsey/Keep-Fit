@@ -32,13 +32,16 @@ export default class Running extends React.Component {
     e.preventDefault();
     var newWorkout = {};
     newWorkout.type = 'running';
-    newWorkout.timeStamp = new Date();
     newWorkout.workoutName = this.state.workoutName;
     newWorkout.run = {time: this.state.time, distance: this.state.distance, /*add geographical data for google maps api*/}
     $.post('/api/users/${userId}/workouts', newWorkout, (err, resp)=>{
-      if (err) {console.log('Huzahhh!', err)};
+      if(err) {
+        console.log('Your run cannot be submitted at this time. ' +  err);
+      } else {
+        console.log('The following run has been submitted: ' + resp);
+      }
     });
-    browserHistory.push('/user');
+    browserHistory.push('/');
   }
 
   render() {
