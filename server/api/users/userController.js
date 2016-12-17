@@ -97,45 +97,61 @@ module.exports = {
   },
 
 
-  //Gets the routines for the current user
-  getAllUsers: function(req, res, next) {
+  getUsers: function(req, res, next) {
+    const searchParams = req.body;
+    User.find(searchParams, (err, users) => {
+      if (err) {
+        console.error('Error getting users', err);
+        res.sendStatus(404);
+      } else {
+        res.json(users);
+      }
 
-
-    // .then(function(routines){
-    //   res.status(200).json(routines);
-    // })
-    // .catch(function(error) {
-    //   res.send(error);
-    // });
+      next();
+    });
   },
 
-  //Gets a single routine for a user
   updateUser: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
 
-
-    // .then(function(routine){
-    //   console.log(routine);
-    //   res.status(200).json(routine);
-    // })
-    // .catch(function(error) {
-    //   res.send(error);
-    // });
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        Object.assign();
+        user.save((err) => {
+          if (err) {
+            console.error('Error updating user', err);
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(204);
+            next();
+          }
+        });
+      }
+    });
   },
 
-  //Deletes a user's routine from the Routine table
   deleteUser: function(req, res, next) {
+    User.remove({
+      _id: req.params.userId
 
-    // .then(function() {
-    //   res.status(200).send('Routine successfully deleted!')
-    // })
-    // .catch(function(error){
-    //   res.send(error);
-    // });
+    }, (err, user) => {
+      if (err) {
+        console.error('Error deleting user', err);
+      } else {
+        res.sendStatus(204);
+        next();
+      }
+    });
   },
 
   getUser: function(req, res, next) {
     User.findOne({
       _id: req.params.userId
+
     }, (err, user) => {
       if (err) {
         console.error('Error retrieving user', err);
