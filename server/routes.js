@@ -19,12 +19,6 @@ module.exports = function (app, express) {
 
   app.use(express.static(path.join(__dirname, '../client')));
 
-  //need to add this to handle direct addressing of routes.
-  //will serve index.html which has our jsx linked for routing.
-  app.get('*', function (request, response){
-    response.sendFile(path.join(__dirname, '../client/index.html'));
-  });
-
   //initiatie express.Router();
   var router = express.Router();
   //these are the api endpoints and routes.
@@ -33,6 +27,7 @@ module.exports = function (app, express) {
     .post(userController.addUser);// adds a new user to the database
 
   router.route('/users/:userId')
+    .get(userController.getUser)
     .put(userController.updateUser)//for user settings on the payload attach type of settings
     .delete(userController.deleteUser);//for deleting a user
 
@@ -54,8 +49,13 @@ module.exports = function (app, express) {
     .delete(exerciseController.deleteExercise);//deleted a workout from a specific routine
 
 
-  app.use('/api', router);
+  app.use('/', router);
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
+  //need to add this to handle direct addressing of routes.
+  //will serve index.html which has our jsx linked for routing.
+  app.get('*', function (request, response){
+    response.sendFile(path.join(__dirname, '../client/index.html'));
+  });
 };

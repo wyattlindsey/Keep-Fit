@@ -1,35 +1,75 @@
-const Promise = require('bluebird');
+const User = require('../users/userModel');
 const Workout = require('./workoutModel');
-const Exercise = require('../exercises/exerciseModel');
 
 module.exports = {
-  //Adds a user's routine to the Routine table
   getWorkouts: function (req, res, next) {
-    var user = req.params.userId;
-    Workout.find({ userId: user })
-    .then(function(workouts){
-      res.status(200).json(workouts)
-    })
-    .catch(function(error){
-      res.status(404).send(error);
-    })
+    User.findOne({
+      _id: req.params.userId
+
+    }, (err, user) => {
+      if (err) {
+        console.error('Error locating user', err);
+        res.sendStatus(404)
+      } else {
+        res.json(user.workouts);
+
+        next();
+      }
+    });
   },
 
-  //Gets the routines for the current user
-  addWorkout: function(req, res, next) {
-    var user = req.params.userId;
-    var newWorkout = {
-      userId: user,
-      exercise: req.body.exercises //<-- exercises array;
-    }
+  //Gets a single workout for a particular user
+  getWorkout: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
 
-    Workout.create(newWorkout)
-    .then(function(newWorkout){
-      res.status(200).json(newWorkout);
-    })
-    .catch(function(error){
-      res.status(404).send(error);
-    })
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        const workout = user.workouts.id(req.params.workoutId);
+        if (!workout) {
+          console.error('Error finding workout', err);
+          res.sendStatus(404);
+        } else {
+          res.json(workout);
+        }
+
+        next();
+      }
+    });
+  },
+
+  addWorkout: function(req, res, next) {
+    const newWorkout = new Workout(req.body);
+    newWorkout.save((err) => {
+      if (err) {
+        console.error('Error adding workout', err);
+        res.sendStatus(404);
+      } else {
+        User.findOne({
+          _id: req.params.userId
+        }, (err, user) => {
+          if (err) {
+            console.error('Error locating user', err);
+            res.sendStatus(404)
+          } else {
+            user.workouts.push(newWorkout);
+            user.save((err, data) => {
+              if (err) {
+                console.error('Error adding workout to user', err);
+                res.sendStatus(404);
+              } else {
+                res.sendStatus(201);
+              }
+
+              next();
+            });
+          }
+        });
+      }
+    });
   },
 
     //-----------The following concept can be implemented for future versions if you decide to use an       exercise schema.
@@ -48,32 +88,67 @@ module.exports = {
     //
 
 
-  //Gets a single routine for a user
-  getWorkout: function(req, res, next) {
 
 
-    // .then(function(routine){
-    //   console.log(routine);
-    //   res.status(200).json(routine);
-    // })
-    // .catch(function(error) {
-    //   res.send(error);
-    // });
-  },
-
-  //Deletes a user's routine from the Routine table
   updateWorkout: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
 
-
-    // .then(function() {
-    //   res.status(200).send('Routine successfully deleted!')
-    // })
-    // .catch(function(error){
-    //   res.send(error);
-    // });
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        const workout = user.workouts.id(req.params.workoutId);
+        if (!workout) {
+          console.error('Error finding workout', err);
+          res.sendStatus(404);
+          next();
+        } else {
+          Object.assign(workout, req.body);
+          user.save((err) => {
+            if (err) {
+              console.error('Error updating workout', err);
+              res.sendStatus(500);
+            } else {
+              res.sendStatus(204);
+              next();
+            }
+          });
+        }
+      }
+    });
   },
 
   deleteWorkout: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
 
-  },
-}
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        const workout = user.workouts.id(req.params.workoutId);
+        if (!workout) {
+          console.error('Error finding workout', err);
+          res.sendStatus(404);
+          next();
+        } else {
+          workout.remove();
+          user.save((err) => {
+            if (err) {
+              console.error('Error saving changes', err);
+              res.sendStatus(404);
+            } else {
+              res.sendStatus(204);
+            }
+
+            next();
+          });
+        }
+
+      }
+    });
+  }
+};
