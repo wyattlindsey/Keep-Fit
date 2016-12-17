@@ -1,6 +1,6 @@
 # Local files
-./client/bundle.js
-./server/db
+client/bundle.js
+server/db
 .idea/
 <<<<<<< HEAD
 
@@ -51,12 +51,5 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
-=======
-node_modules/
-client/bundle.js
-server/db
-server/testRoutes.js
-server/api/users/testController.js
+
 .gitattributes
-.gitignore
->>>>>>> implement getter and setter for user events
