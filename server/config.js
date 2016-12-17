@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
 const db = mongoose.connection;
 
 const config = function() {
