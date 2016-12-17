@@ -1,8 +1,3 @@
-<<<<<<< eec4efc9c7cb24f06b2765d13a2e869fbe2b8eb2
-.idea/
-node_modules/
-./client/bundle.js
-=======
 # Local files
 ./client/bundle.js
 ./server/db
@@ -55,4 +50,3 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
->>>>>>> Add .gitignore
