@@ -1,8 +1,8 @@
 const Promise = require('bluebird');
 const User = require('./userModel');
-//const jwt = require('jwt-simple');
-//const session = require('express-session');
-//var bcrypt = require('bcrypt-nodejs');
+const jwt = require('jwt-simple');
+const session = require('express-session');
+var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
 
 
@@ -48,9 +48,62 @@ module.exports = {
 
   },
 
-  signup: function (req, res, next) {
-  var username = req.body.username;
-  var password = req.body.password;
+  signUp: function (req, res, next) {
+  const username = req.body.name;
+  const password = req.body.pass;
+
+
+  // check to see if user already exists
+  User.findOne({username: username})
+    .then(function (user) {
+      if (user) {
+        next(new Error('User already exist!'));
+      } else {
+        // make a new user if not one
+        return User.create({
+          username: username,
+          password: password
+        });
+      }
+    })
+    .then(function (user) {
+      // create token to send back for auth
+      var token = jwt.encode(user, 'secret');
+      res.json({token: token});
+    })
+    .fail(function (error) {
+      next(error);
+    });
+
+  const newUser = new User({ username: username })
+    .fetch()
+    .then(function(user) {
+      if (!user) {
+        bcrypt.hash(password, null, null, function(err, hash) {
+          Users.create({
+            username: username,
+            password: hash
+          }).then(function(user) {
+              createSession(req, res, user);
+          });
+        });
+      } else {
+        console.log('Account already exists');
+        res.redirect('/signup');
+      }
+    })
+
+    newUser.save((err) => {
+      if (err) {
+        console.error('Error saving user', err);
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(201);
+      }
+
+      next();
+
+
 
   User.create({ username: username })
     .fetch()
@@ -165,6 +218,7 @@ module.exports = {
   },
 
   addUser: function(req, res, next) {
+    console.log(req.body)
     const newUser = new User(req.body);
     newUser.save((err) => {
       if (err) {
