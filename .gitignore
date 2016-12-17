@@ -1,3 +1,8 @@
 .idea/
 node_modules/
-./client/bundle.js
+client/bundle.js
+server/db
+server/testRoutes.js
+server/api/users/testController.js
+.gitattributes
+.gitignore
