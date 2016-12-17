@@ -13,7 +13,7 @@ module.exports = function (app, express) {
   //   resave: false,
   //   saveUninitialized: true
   // }));
-
+  app.use(morgan('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded());
 
