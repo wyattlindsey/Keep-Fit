@@ -98,7 +98,7 @@ module.exports = {
 
 
   getUsers: function(req, res, next) {
-    const searchParams = req.body;
+    const searchParams = req.body || {};
     User.find(searchParams, (err, users) => {
       if (err) {
         console.error('Error getting users', err);
