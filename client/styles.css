@@ -6,15 +6,27 @@
   margin-left: 10px;
 }
 
+.dashboard-background {
+  background-color: rgb(139, 107, 180);
+}
+
 .text-white {
   color: white;
+}
+
+.navbutton-right {
+  position: absolute;
+  display: block;
+  right: 0px;
+  bottom: 0px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .navbar .navbar-right {
   position: absolute;
   display: block;
   padding: 0px 5px 0px 5px;
-  border: 1px solid white;
   border-radius: 3px;
   right: 0px;
   bottom: 0px;
