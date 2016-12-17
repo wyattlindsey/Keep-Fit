@@ -6,7 +6,7 @@ const WorkoutSchema = mongoose.model('Workout').schema;
 
 const UserSchema = new mongoose.Schema({
   name: String,
-  history: [EventSchema],
+  events: [EventSchema],
   workouts: [WorkoutSchema]
 });
 
