@@ -1,6 +1,6 @@
 import { Link, browserHistory }from 'react-router';
 
-export default class Workout extends React.Component {
+export default class WeightLifting extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +15,7 @@ export default class Workout extends React.Component {
     this.handleExerciseChange = this.handleExerciseChange.bind(this);
     this.handleWeightChange = this.handleWeightChange.bind(this);
     this.handleRepChange = this.handleRepChange.bind(this);
-    this.completeWorkout = this.completeWorkout.bind(this);
+    this.addWorkout = this.addWorkout.bind(this);
     this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
   }
 
@@ -51,7 +51,7 @@ export default class Workout extends React.Component {
   }
 
   // Submits packaged workout obj to db as x-www-form data.
-  completeWorkout(e) {
+  addWorkout(e) {
     e.preventDefault();
     var newWorkout = {};
     newWorkout.workoutType = 'weight-lifting';
@@ -64,7 +64,7 @@ export default class Workout extends React.Component {
         console.log('The following workout has been submitted: ' + resp);
       }
     });
-    browserHistory.push('/user');
+    browserHistory.push('/');
   }
 
   render() {
@@ -72,7 +72,7 @@ export default class Workout extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3 signup-form text-center">
-            <h1>Add Workout!</h1>
+            <h2>Weight Lifting</h2>
             <div className="col-sm-8 col-sm-offset-2">
               <form>
                 <label className="text-left">Workout Name:
@@ -92,7 +92,7 @@ export default class Workout extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.workout.map((i, k) => {
+                    {this.state.exercises.map((i, k) => {
                       return <tr key={k} className="setDisplay">
                         <td>{i.exercise}</td>
                         <td>{i.weight}</td>
@@ -102,8 +102,8 @@ export default class Workout extends React.Component {
                     })}
                     <tr>
                       <td><input type="text" ref={input => this._ex = input} autoFocus value={this.state.exercise} onChange={this.handleExerciseChange}/></td>
-                      <td><input type="number" className="thin-width" value={this.state.weight} onChange={this.handleWeightChange}/></td>
-                      <td><input type="number" className="thin-width" value={this.state.reps} onChange={this.handleRepChange}/></td>
+                      <td><input type="number" min="0" className="thin-width" value={this.state.weight} onChange={this.handleWeightChange}/></td>
+                      <td><input type="number" min="0" className="thin-width" value={this.state.reps} onChange={this.handleRepChange}/></td>
                       <td>
                         <a href="#" onClick={this.addExercise}>Add set</a>
                       </td>
@@ -114,8 +114,8 @@ export default class Workout extends React.Component {
                   type='submit'
                   value='Add Workout'
                   className="btn btn-default margin-top-10"
-                  onClick={this.completeWorkout}
-                  >Complete Workout</button>
+                  onClick={this.addWorkout}
+                  >Add Workout</button>
               </form>
             </div>
           </div>

@@ -1,17 +1,7 @@
-// export default class App extends React.Component {
-//   constructor(props){
-//     super(props);
-//   }
-//
-//   render(){
-//     return (
-//       <div>
-//         Hi! I'm a react app!
-//       </div>
-//     )
-//   }
-// }
+'use strict';
+
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
+<<<<<<< eec4efc9c7cb24f06b2765d13a2e869fbe2b8eb2
 import Signup from './Signup.jsx';
 import User from './User.jsx';
 import Workout from './Workout.jsx';
@@ -48,5 +38,15 @@ ReactDOM.render((
     <Route path='/workout' component={Workout}/>
     <Route path='/heatmap' component={HeatMap}/>
     <Route path='/workout/running' component={Running}/>
+=======
+import Dashboard from './Dashboard.jsx';
+import WeightLifting from './WeightLifting.jsx';
+
+
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path='/' component={Dashboard}/>
+    <Route path='/lifting' component={WeightLifting}/>
+>>>>>>> Add .gitignore
   </Router>
 ), document.getElementById('app'));
