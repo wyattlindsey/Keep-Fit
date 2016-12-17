@@ -32,6 +32,8 @@ const App = () => (
       </div>
       <div>
         <Link to="/heatmap">Click here to go to Heatmap</Link>
+      </div>
+      <div>
         <Link to="workout/running">Click here to go to Running</Link>
       </div>
     </div>
