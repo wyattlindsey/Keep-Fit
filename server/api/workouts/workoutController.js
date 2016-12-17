@@ -56,7 +56,7 @@ module.exports = {
             res.sendStatus(404)
           } else {
             user.workouts.push(newWorkout);
-            user.save((err, data) => {
+            user.save((err) => {
               if (err) {
                 console.error('Error adding workout to user', err);
                 res.sendStatus(404);

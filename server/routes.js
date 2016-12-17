@@ -5,6 +5,7 @@ var path = require('path');
 var workoutController = require('./api/workouts/workoutController.js');
 var exerciseController = require('./api/exercises/exerciseController.js');
 var userController = require('./api/users/userController.js');
+var eventController = require('./api/events/eventController');
 
 module.exports = function (app, express) {
   // app.use(morgan()); //<-- debugging
@@ -47,6 +48,11 @@ module.exports = function (app, express) {
   router.route('/users/:userId/workouts/:workoutId/exercises/:exercisesId')
     .put(exerciseController.updateExercise)//updates a workout for a specific routine
     .delete(exerciseController.deleteExercise);//deleted a workout from a specific routine
+
+  // this route addresses workout history for a particular user
+  router.route('/users/:userId/events')
+    .get(eventController.getEvents)
+    .post(eventController.addEvent);
 
 
   app.use('/', router);
