@@ -133,33 +133,33 @@ module.exports = {
     // });
   },
 
-  // getUser: function(req, res, next) {
-  //   User.findOne({
-  //     _id: req.params.userId
-  //   }, (err, user) => {
-  //     if (err) {
-  //       console.error('Error retrieving user', err);
-  //       res.sendStatus(404);
-  //     } else {
-  //       res.json(user);
-  //     }
-  //
-  //     next();
-  //   });
-  // },
-  //
-  // addUser: function(req, res, next) {
-  //   const newUser = new User(req.body);
-  //   newUser.save((err) => {
-  //     if (err) {
-  //       console.error('Error saving user', err);
-  //       res.sendStatus(404);
-  //     } else {
-  //       res.sendStatus(201);
-  //     }
-  //
-  //     next();
-  //   });
-  // }
+  getUser: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
+    }, (err, user) => {
+      if (err) {
+        console.error('Error retrieving user', err);
+        res.sendStatus(404);
+      } else {
+        res.json(user);
+      }
+
+      next();
+    });
+  },
+
+  addUser: function(req, res, next) {
+    const newUser = new User(req.body);
+    newUser.save((err) => {
+      if (err) {
+        console.error('Error saving user', err);
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(201);
+      }
+
+      next();
+    });
+  }
 
 };
