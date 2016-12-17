@@ -46,10 +46,10 @@ export default class Running extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3 signup-form text-center">
-            <h1>Add Workout!</h1>
+            <h1>Add A Run!</h1>
             <div className="col-sm-8 col-sm-offset-2">
               <form>
-                <label className="text-left">Workout Name:
+                <label className="text-left">Run Name:
                   <input
                     type='text'
                     placeholder='Workout Name'
