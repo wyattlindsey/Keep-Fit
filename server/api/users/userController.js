@@ -133,14 +133,33 @@ module.exports = {
     // });
   },
 
-  addUser: function(req, res, next) {
+  // getUser: function(req, res, next) {
+  //   User.findOne({
+  //     _id: req.params.userId
+  //   }, (err, user) => {
+  //     if (err) {
+  //       console.error('Error retrieving user', err);
+  //       res.sendStatus(404);
+  //     } else {
+  //       res.json(user);
+  //     }
+  //
+  //     next();
+  //   });
+  // },
+  //
+  // addUser: function(req, res, next) {
+  //   const newUser = new User(req.body);
+  //   newUser.save((err) => {
+  //     if (err) {
+  //       console.error('Error saving user', err);
+  //       res.sendStatus(404);
+  //     } else {
+  //       res.sendStatus(201);
+  //     }
+  //
+  //     next();
+  //   });
+  // }
 
-    // .then(function() {
-    //   res.status(200).send('Routine successfully deleted!')
-    // })
-    // .catch(function(error){
-    //   res.send(error);
-    // });
-  },
-
-}
+};
