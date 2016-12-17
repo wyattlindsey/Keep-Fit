@@ -54,8 +54,8 @@ export default class WeightLifting extends React.Component {
   addWorkout(e) {
     e.preventDefault();
     var newWorkout = {};
-    newWorkout.workoutType = 'weight-lifting';
-    newWorkout.workoutName = this.state.workoutName;
+    newWorkout.type = 'weight-lifting';
+    newWorkout.name = this.state.workoutName;
     newWorkout.exercises = this.state.exercises;
     $.post('/users/${userId}/workouts', newWorkout, (err, resp)=>{
       if(err) {

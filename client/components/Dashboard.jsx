@@ -16,8 +16,21 @@ export default class Dashboard extends React.Component {
       <div>
         {<Home />}
         <div className="container">
+          
           <div className="col-md-4">
-            Hello World 1!
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  Panel title
+                </h3>
+              </div>
+              <div class="panel-body">
+                Panel content
+              </div>
+              <div class="panel-footer">
+                Panel footer
+              </div>
+            </div>
           </div>
         </div>
       </div>
