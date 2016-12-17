@@ -24,7 +24,7 @@ module.exports = function (app, express) {
   var router = express.Router();
   //these are the api endpoints and routes.
   router.route('/users')
-    .get(userController.getAllUsers)// gets an array of all the users in the database
+    .get(userController.getUsers)// gets an array of all the users in the database
     .post(userController.addUser);// adds a new user to the database
 
   router.route('/users/:userId')
