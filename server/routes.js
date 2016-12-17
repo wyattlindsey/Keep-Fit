@@ -55,7 +55,7 @@ module.exports = function (app, express) {
     .post(eventController.addEvent);
 
 
-  app.use('/', router);
+  app.use('/api', router);
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
