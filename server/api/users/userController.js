@@ -1,9 +1,7 @@
-const Promise = require('bluebird');
-const User = require('./userModel');
 const jwt = require('jwt-simple');
-const session = require('express-session');
 var bcrypt = require('bcrypt-nodejs');
-var SALT_WORK_FACTOR = 10;
+var Promise  = require('bluebird');
+var User = Promise.promisifyAll(require('./userModel'))
 
 
 //utility functions------------------------------------
@@ -26,104 +24,71 @@ var checkUser = function(req, res, next){
 
 
 module.exports = {
-    signin: function (req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
+  signIn: function (req, res, next) {
+    const name = req.body.name;
+    const pass = req.body.pass;
 
-    User.findOne({username: username})
-      .then(function(user) {
+    User.findOne({name: name})
+      .then(function (user) {
+        console.log(user)
         if (!user) {
-          res.redirect('/login');
+          next(new Error('User does not exist'));
         } else {
-          bcrypt.compare(password, user.get('password'), function(err, match) {
+          bcrypt.compare(pass, user.get('pass'), function(err, match) {
             if (match) {
               var token = jwt.encode(user, 'secret');
               res.json({token: token});
             } else {
-              res.redirect('/login');
+              return next(new Error('No user'));
             }
-          });
+          })
         }
-    });
-
+      })
+      .catch(function (error) {
+        next(error);
+      });
   },
 
   signUp: function (req, res, next) {
-  const username = req.body.name;
-  const password = req.body.pass;
-
+    const name = req.body.name;
+    const pass = req.body.pass;
 
   // check to see if user already exists
-  User.findOne({username: username})
+  User.findOne({name: name})
     .then(function (user) {
       if (user) {
         next(new Error('User already exist!'));
       } else {
         // make a new user if not one
-        return User.create({
-          username: username,
-          password: password
+        bcrypt.genSalt(10, function (err, salt) {
+          if (err) {
+            return next(err);
+          }
+          // hash the password along with our new salt
+          bcrypt.hash(pass, salt, null, function (err, hash) {
+            if (err) {
+              return next(err);
+            }
+            // override the cleartext password with the hashed one
+            User.create({
+              name: name,
+              pass: hash,
+              salt: salt
+            })
+          });
         });
       }
     })
     .then(function (user) {
       // create token to send back for auth
-      var token = jwt.encode(user, 'secret');
+      console.log('AUTH')
+      var token = jwt.encode(name, 'secret');
       res.json({token: token});
     })
-    .fail(function (error) {
+    .catch(function (error) {
       next(error);
     });
-
-  const newUser = new User({ username: username })
-    .fetch()
-    .then(function(user) {
-      if (!user) {
-        bcrypt.hash(password, null, null, function(err, hash) {
-          Users.create({
-            username: username,
-            password: hash
-          }).then(function(user) {
-              createSession(req, res, user);
-          });
-        });
-      } else {
-        console.log('Account already exists');
-        res.redirect('/signup');
-      }
-    })
-
-    newUser.save((err) => {
-      if (err) {
-        console.error('Error saving user', err);
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(201);
-      }
-
-      next();
-
-
-
-  User.create({ username: username })
-    .fetch()
-    .then(function(user) {
-      if (!user) {
-        bcrypt.hash(password, null, null, function(err, hash) {
-          Users.create({
-            username: username,
-            password: hash
-          }).then(function(user) {
-              createSession(req, res, user);
-          });
-        });
-      } else {
-        console.log('Account already exists');
-        res.redirect('/signup');
-      }
-    });
   },
-
 
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
