@@ -56,8 +56,8 @@ export default class WeightLifting extends React.Component {
     var newWorkout = {};
     newWorkout.type = 'weight-lifting';
     newWorkout.name = this.state.workoutName;
-    newWorkout.exercises = this.state.exercises;
-    $.post('/users/${userId}/workouts', newWorkout, (err, resp)=>{
+    newWorkout.exercises = JSON.stringify(this.state.exercises);
+    $.post(`/users/${userId}/workouts`, newWorkout, (err, resp)=>{
       if(err) {
         console.log('Your workout cannot be submitted at this time. ' +  err);
       } else {
