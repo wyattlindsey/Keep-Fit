@@ -34,7 +34,7 @@ export default class Running extends React.Component {
     newWorkout.type = 'running';
     newWorkout.workoutName = this.state.workoutName;
     newWorkout.run = {time: this.state.time, distance: this.state.distance, /*add geographical data for google maps api*/}
-    $.post(`/api/users/${userId}/workouts`, newWorkout, (err, resp)=>{
+    $.post(`/api/users/5854e2ca94aef832a2ca20ba/workouts`, newWorkout, (err, resp)=>{
       if(err) {
         console.log('Your run cannot be submitted at this time. ' +  err);
       } else {

@@ -37,7 +37,7 @@ module.exports = {
           bcrypt.compare(pass, user.get('pass'), function(err, match) {
             if (match) {
               var token = jwt.encode(user, 'secret');
-              res.json({token: token});
+              res.json({token: token, name: user._id});
             } else {
               return next(new Error('No user'));
             }
@@ -60,7 +60,7 @@ module.exports = {
         next(new Error('User already exist!'));
       } else {
         // make a new user if not one
-        bcrypt.genSalt(10, function (err, salt) {
+        return bcrypt.genSalt(10, function (err, salt) {
           if (err) {
             return next(err);
           }
@@ -70,7 +70,7 @@ module.exports = {
               return next(err);
             }
             // override the cleartext password with the hashed one
-            User.create({
+             User.create({
               name: name,
               pass: hash,
               salt: salt
@@ -79,9 +79,11 @@ module.exports = {
         });
       }
     })
+    .then(function () {
+      return User.findOne({name: name})
+    })
     .then(function (user) {
       // create token to send back for auth
-      console.log('AUTH')
       var token = jwt.encode(name, 'secret');
       res.json({token: token});
     })
