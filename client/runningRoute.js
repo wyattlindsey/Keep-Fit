@@ -4,10 +4,39 @@ L.tileLayer('https://api.mapbox.com/styles/v1/davflo-16/ciwvhkb9s00ff2pnx7nix4bx
     maxZoom: 18
 }).addTo(runningRoute);
 
-L.Routing.control({
+var control = L.Routing.control({
     waypoints: [
-        L.latLng(57.74, 11.94),
-        L.latLng(57.6792, 11.949)
+        L.latLng(29.7604, -95.3698),
+        L.latLng(29.7604, -95.3700)
     ],
     routeWhileDragging: true
 }).addTo(runningRoute);
+
+function createButton(label, container) {
+    var btn = L.DomUtil.create('button', '', container);
+    btn.setAttribute('type', 'button');
+    btn.innerHTML = label;
+    return btn;
+}
+
+runningRoute.on('click', function(e) {
+    var container = L.DomUtil.create('div'),
+        startBtn = createButton('Start from this location', container),
+        destBtn = createButton('Go to this location', container);
+
+    L.popup()
+        .setContent(container)
+        .setLatLng(e.latlng)
+        .openOn(runningRoute);
+
+    L.DomEvent.on(startBtn, 'click', function() {
+            control.spliceWaypoints(0, 1, e.latlng);
+            runningRoute.closePopup();
+    });
+
+    L.DomEvent.on(destBtn, 'click', function() {
+            control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
+            runningRoute.closePopup();
+    });
+});
+
