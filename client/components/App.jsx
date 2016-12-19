@@ -7,6 +7,7 @@ import HeatMap from './HeatMap.jsx';
 import Running from './Running.jsx';
 import Signup from './Signup.jsx';
 import Signin from './Signin.jsx';
+// import AddWorkout from './AddWorkout.jsx';
 
 ReactDOM.render((
   <Router history={browserHistory}>
@@ -16,5 +17,6 @@ ReactDOM.render((
     <Route path='/heatmap' component={HeatMap}/>
     <Route path='/signup' component={Signup}/>
     <Route path='/signin' component={Signin}/>
+    {/*}<Route path='/addworkout' component={AddWorkout}/>*/}
   </Router>
 ), document.getElementById('app'));
