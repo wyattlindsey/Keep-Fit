@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
   pass: String,
   salt: String,
   events: [EventSchema],
-  workouts: [WorkoutSchema]
+  workouts: [WorkoutSchema],
+  pending: [WorkoutSchema]
 });
 
 const User = mongoose.model('User', UserSchema);

@@ -44,6 +44,15 @@ module.exports = function (app, express) {
     .put(workoutController.updateWorkout)//updates a workout
     .delete(workoutController.deleteWorkout);//deleted a workout.
 
+  // this is for pending workouts the user plans to complete.
+  router.route('/users/:userId/pending')
+    .get(workoutController.getPendingWorkouts)
+    .post(workoutController.addPendingWorkout);
+
+  router.route('/users/:userId/pending/:pendingWorkoutId')
+    .get(workoutController.getPendingWorkout)
+    .delete(workoutController.deletePendingWorkout);
+
   // this is a specific exercise which belongs to a workout.
   router.route('/users/:userId/workouts/:workoutId/exercises/:exercisesId')
     .put(exerciseController.updateExercise)//updates a workout for a specific routine

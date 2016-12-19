@@ -71,24 +71,6 @@ module.exports = {
     });
   },
 
-    //-----------The following concept can be implemented for future versions if you decide to use an       exercise schema.
-    //
-    //
-    // var exercises = req.body.exercises //<-- should be an array
-    // exercises.forEach(exercise) {
-    //   var newExercise = {
-    //     workoutId: req.params.workoutId,
-    //     name: exercise.name,
-    //     type: exercise.type,
-    //     metrics: exercise.metrics //<-- should be an array
-    //   }
-    //    Exercise.create(exercise)
-    // }
-    //
-
-
-
-
   updateWorkout: function(req, res, next) {
     User.findOne({
       _id: req.params.userId
@@ -135,6 +117,107 @@ module.exports = {
           next();
         } else {
           workout.remove();
+          user.save((err) => {
+            if (err) {
+              console.error('Error saving changes', err);
+              res.sendStatus(404);
+            } else {
+              res.sendStatus(204);
+            }
+
+            next();
+          });
+        }
+
+      }
+    });
+  },
+
+  getPendingWorkouts: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
+
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        res.json(user.pending);
+      }
+
+      next();
+    });
+  },
+
+  getPendingWorkout: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
+
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        const pendingWorkout = user.pending.id(req.params.pendingWorkoutId);
+        if (!pendingWorkout) {
+          console.error('Error finding pending workout', err);
+          res.sendStatus(404);
+        } else {
+          res.json(pendingWorkout);
+        }
+
+        next();
+      }
+    });
+  },
+
+  addPendingWorkout: function(req, res, next) {
+    const newPendingWorkout = new Workout(req.body);
+    newPendingWorkout.save((err) => {
+      if (err) {
+        console.error('Error adding pending workout', err);
+        res.sendStatus(404);
+      } else {
+        User.findOne({
+          _id: req.params.userId
+        }, (err, user) => {
+          if (err) {
+            console.error('Error locating user', err);
+            res.sendStatus(404)
+          } else {
+            user.pending.push(newPendingWorkout);
+            user.save((err) => {
+              if (err) {
+                console.error('Error adding pending workout to user', err);
+                res.sendStatus(404);
+              } else {
+                res.sendStatus(201);
+              }
+
+              next();
+            });
+          }
+        });
+      }
+    });
+  },
+
+  deletePendingWorkout: function(req, res, next) {
+    User.findOne({
+      _id: req.params.userId
+
+    }, (err, user) => {
+      if (err) {
+        console.error('Error finding user', err);
+        res.sendStatus(404);
+      } else {
+        const pendingWorkout = user.pending.id(req.params.pendingWorkoutId);
+        if (!pendingWorkout) {
+          console.error('Error finding pending workout', err);
+          res.sendStatus(404);
+          next();
+        } else {
+          pendingWorkout.remove();
           user.save((err) => {
             if (err) {
               console.error('Error saving changes', err);
