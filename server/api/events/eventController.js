@@ -19,7 +19,7 @@ module.exports = {
 
   addEvent: function(req, res, next) {
     const newEvent = new Event(req.body);
-    newEvent.save((err) => {
+    newEvent.save((err, newEventObject) => {
       if (err) {
         console.error('Error adding event', err);
         res.sendStatus(404);
@@ -37,7 +37,7 @@ module.exports = {
                 console.error('Error saving adding event to user', err);
                 res.sendStatus(404);
               } else {
-                res.sendStatus(201);
+                res.json(newEventObject._id);
               }
 
               next();

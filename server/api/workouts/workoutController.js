@@ -42,7 +42,7 @@ module.exports = {
 
   addWorkout: function(req, res, next) {
     const newWorkout = new Workout(req.body);
-    newWorkout.save((err) => {
+    newWorkout.save((err, newWorkoutObject) => {
       if (err) {
         console.error('Error adding workout', err);
         res.sendStatus(404);
@@ -60,7 +60,7 @@ module.exports = {
                 console.error('Error adding workout to user', err);
                 res.sendStatus(404);
               } else {
-                res.sendStatus(201);
+                res.json(newWorkoutObject._id);
               }
 
               next();
@@ -173,7 +173,7 @@ module.exports = {
 
   addPendingWorkout: function(req, res, next) {
     const newPendingWorkout = new Workout(req.body);
-    newPendingWorkout.save((err) => {
+    newPendingWorkout.save((err, newPendingWorkoutObject) => {
       if (err) {
         console.error('Error adding pending workout', err);
         res.sendStatus(404);
@@ -191,7 +191,7 @@ module.exports = {
                 console.error('Error adding pending workout to user', err);
                 res.sendStatus(404);
               } else {
-                res.sendStatus(201);
+                res.json(newPendingWorkoutObject._id);
               }
 
               next();

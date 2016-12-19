@@ -187,12 +187,12 @@ module.exports = {
   addUser: function(req, res, next) {
     console.log(req.body)
     const newUser = new User(req.body);
-    newUser.save((err) => {
+    newUser.save((err, newUserObject) => {
       if (err) {
         console.error('Error saving user', err);
         res.sendStatus(404);
       } else {
-        res.sendStatus(201);
+        res.json(newUserObject._id);
       }
 
       next();
