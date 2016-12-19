@@ -7,16 +7,17 @@ import HeatMap from './HeatMap.jsx';
 import Running from './Running.jsx';
 import Signup from './Signup.jsx';
 import Signin from './Signin.jsx';
-// import AddWorkout from './AddWorkout.jsx';
 
+import Splash from './Splash.jsx';
 ReactDOM.render((
   <Router history={browserHistory}>
-    <Route path='/' component={Dashboard}/>
+    <Route path='/' component={Splash}/>
+    <Route path='/dashboard' component={Dashboard}/>
     <Route path='/lifting' component={WeightLifting}/>
     <Route path='/running' component={Running}/>
     <Route path='/heatmap' component={HeatMap}/>
     <Route path='/signup' component={Signup}/>
     <Route path='/signin' component={Signin}/>
-    {/*}<Route path='/addworkout' component={AddWorkout}/>*/}
+    {/*<Route path='/addworkout' component={AddWorkout}/>*/}
   </Router>
 ), document.getElementById('app'));
