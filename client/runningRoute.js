@@ -5,5 +5,9 @@ L.tileLayer('https://api.mapbox.com/styles/v1/davflo-16/ciwvhkb9s00ff2pnx7nix4bx
 }).addTo(runningRoute);
 
 L.Routing.control({
-
+    waypoints: [
+        L.latLng(57.74, 11.94),
+        L.latLng(57.6792, 11.949)
+    ],
+    routeWhileDragging: true
 }).addTo(runningRoute);
