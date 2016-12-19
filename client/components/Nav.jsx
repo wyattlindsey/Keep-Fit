@@ -14,7 +14,7 @@ export default class Nav extends React.Component {
 
   reRouteAddWorkout() {
     return (
-      <Link to='lifting'>Add Workout</Link>
+      <Link to='/lifting'>Add Workout</Link>
     )
   }
 
