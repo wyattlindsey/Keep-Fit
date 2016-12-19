@@ -6,8 +6,7 @@ export default class Running extends React.Component {
     this.state = {
       time: 0,
       distance: 0,
-      name: '',
-      exercises: []
+      workoutName: '',
     };
 
     this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -36,16 +35,14 @@ export default class Running extends React.Component {
       distance: this.state.distance
       //grographical data
     };
-    var exercises = this.state.exercises.slice();
-    exercises.push(run);
-    this.setState({ exercises: exercises });
+    var exercises = [run];
 
     var newWorkout = {};
     var userId = window.sessionStorage.user;
 
     newWorkout.type = 'running';
-    newWorkout.name = this.state.name;
-    newWorkout.exercises = JSON.stringify(this.state.exercises);
+    newWorkout.name = this.state.workoutName;
+    newWorkout.exercises = JSON.stringify(exercises);
     $.post(`/api/users/${userId}/workouts`, newWorkout, (err, resp)=>{
       if(err) {
         console.log('Your run cannot be submitted at this time. ' +  err);
