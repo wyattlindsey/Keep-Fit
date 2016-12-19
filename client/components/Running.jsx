@@ -39,13 +39,12 @@ export default class Running extends React.Component {
     var exercises = this.state.exercises.slice();
     exercises.push(run);
     this.setState({ exercises: exercises });
-    this._ex.focus();
 
     var newWorkout = {};
     var userId = window.sessionStorage.user;
 
     newWorkout.type = 'running';
-    newWorkout.name = this.state.workoutName;
+    newWorkout.name = this.state.name;
     newWorkout.exercises = JSON.stringify(this.state.exercises);
     $.post(`/api/users/${userId}/workouts`, newWorkout, (err, resp)=>{
       if(err) {
