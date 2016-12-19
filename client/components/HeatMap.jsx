@@ -40,13 +40,16 @@ export default class HeatMap extends React.Component {
 
     return (
         <div className='row'>
-        <div className='col-md-10 col-md-offset-1'>
-        <h4>Heat Visual</h4>
-        <hr/>
-        <br/>
-          <div className='heat'></div>
-          <hr/>
-        </div>
+          <div className='col-md-10 col-md-offset-1'>
+            <div className="flex-center">
+              <h3>Fit Tracker</h3>
+            </div>
+            <hr/><br/>
+              <div className="flex-center">
+                <div className='heat'></div>
+              </div>
+            <hr/>
+          </div>
         </div>
     );
   }
