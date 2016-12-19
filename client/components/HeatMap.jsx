@@ -28,7 +28,8 @@ export default class HeatMap extends React.Component {
              min: "#efefef",
              max: "#8F7FFF",
              empty: "white"
-           }
+           },
+           cellSize: 14,
          });
        }
      });
@@ -36,15 +37,17 @@ export default class HeatMap extends React.Component {
 
 
   render() {
-    const styles = {
-      padding: 10,
-    };
+
     return (
-      <div style={styles}>
-            <div className='heat'>
-            {console.log(this.state)}
-          </div>
-    </div>
+        <div className='row'>
+        <div className='col-md-10 col-md-offset-1'>
+        <h4>Heat Visual</h4>
+        <hr/>
+        <br/>
+          <div className='heat'></div>
+          <hr/>
+        </div>
+        </div>
     );
   }
 

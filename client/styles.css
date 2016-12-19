@@ -114,3 +114,11 @@ table {
 .setDisplay:nth-child(even) {
   background-color: rgb(213, 199, 238);
 }
+
+hr {
+  border-color: rgb(213, 199, 238);
+}
+
+h4 {
+  color: rgb(68, 37, 107);
+}
