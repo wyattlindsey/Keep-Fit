@@ -2,7 +2,6 @@
 client/bundle.js
 server/db
 .idea/
-<<<<<<< HEAD
 
 # Logs
 logs
@@ -53,8 +52,3 @@ jspm_packages
 .yarn-integrity
 
 .gitattributes
-=======
-node_modules/
-./client/bundle.js
-server/db/
->>>>>>> updated user controls
