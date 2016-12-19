@@ -15,8 +15,9 @@ var control = L.Routing.control({
 }).addTo(runningRoute);
 
 control.on('routesfound', function(e) {
-    distance = e.routes[0].summary.totalDistance;
+    distance = (e.routes[0].summary.totalDistance * 0.000621371).toFixed(2);
     console.log(distance);
+    $('#distanceField').val(distance);
 });
 
 control.hide();

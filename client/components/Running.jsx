@@ -79,7 +79,7 @@ export default class Running extends React.Component {
                   <tbody>
                     <tr>
                       <td><input type="number" className="thin-width" value={this.state.time} onChange={this.handleTimeChange}/></td>
-                      <td><input type="number" className="thin-width" value={this.state.distance} onChange={this.handleDistanceChange}/></td>
+                      <td><input type="number" id="distanceField" className="thin-width" value={this.state.distance} onChange={this.handleDistanceChange} /></td>
                     </tr>
                   </tbody>
                 </table>
