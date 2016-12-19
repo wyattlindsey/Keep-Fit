@@ -1,4 +1,5 @@
 var runningRoute = L.map('runningRoute').setView([29.7604, -95.3698], 13);
+var distance;
 runningRoute.locate({setView: true});
 
 
@@ -12,6 +13,16 @@ L.tileLayer('https://api.mapbox.com/styles/v1/davflo-16/ciwvhkb9s00ff2pnx7nix4bx
 var control = L.Routing.control({
     routeWhileDragging: true
 }).addTo(runningRoute);
+
+control.on('routesfound', function(e) {
+    distance = e.routes[0].summary.totalDistance;
+    console.log(distance);
+});
+
+control.hide();
+
+
+
 
 function createButton(label, container) {
     var btn = L.DomUtil.create('button', '', container);
