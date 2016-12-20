@@ -35,11 +35,20 @@ export default class Signup extends React.Component {
         console.log('The following account has been submitted: ' + resp);
       }
     })
-    .done(function(body) {
-      window.localStorage.setItem('com.FitKeeper', body.token);
-      window.sessionStorage.setItem('user', body.name)
-      browserHistory.push(`/dashboard`);
-    })
+    .done(function() {
+      $.post(`/api/signin/`, newUser, function (err, resp) {
+        if(err) {
+          console.log('Your account cannot be submitted at this time. Already ' +  err);
+        } else {
+          console.log('The following account has been submitted: ' + resp);
+        }
+      })
+        .done(function(body) {
+          window.localStorage.setItem('com.FitKeeper', body.token);
+          window.sessionStorage.setItem('user', body.name)
+          browserHistory.push(`/dashboard`);
+        });
+    });
 
 
   }
