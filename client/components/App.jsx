@@ -7,12 +7,8 @@ import HeatMap from './HeatMap.jsx';
 import Running from './Running.jsx';
 import Signup from './Signup.jsx';
 import Signin from './Signin.jsx';
-
 import Splash from './Splash.jsx';
-<<<<<<< HEAD
-=======
 
->>>>>>> modify App.jsx to fix merge conflict
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={Splash}/>
