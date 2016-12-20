@@ -79,7 +79,7 @@ export default class WeightLifting extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-sm-6 signup-form text-center">
+          <div className="col-sm-6  col-sm-offset-3signup-form text-center">
             <h2>Weight Lifting</h2>
             <div className="col-sm-8 col-sm-offset-2">
               <form>
