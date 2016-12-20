@@ -12,9 +12,15 @@ export default class Nav extends React.Component {
 
   }
 
-  reRouteAddWorkout() {
+  reRouteAddWeight() {
     return (
-      <Link to='/lifting'>Add Workout</Link>
+      <Link to='/lifting'>Weight Lifting</Link>
+    )
+  }
+
+  reRouteAddRun() {
+    return (
+      <Link to='/running'>Running</Link>
     )
   }
 
@@ -29,7 +35,10 @@ export default class Nav extends React.Component {
               {/* This is where we could add dynamic user login status
             <div className="navbar-right text-white">User</div>*/}
             <button type="button" className="btn btn-default btn-lg navbutton-right">
-              {this.reRouteAddWorkout()}
+              {this.reRouteAddWeight()}
+            </button>
+            <button type="button" className="btn btn-default btn-lg navbutton-rightright">
+              {this.reRouteAddRun()}
             </button>
           </nav>
         </div>
