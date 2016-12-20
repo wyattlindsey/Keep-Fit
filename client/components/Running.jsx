@@ -65,7 +65,7 @@ export default class Running extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3 signup-form text-center">
-            <h1>Add A Run!</h1>
+            <h2>Add A Run!</h2>
             <div className="col-sm-8 col-sm-offset-2">
               <form>
                 <label className="text-left">Run Name:
@@ -85,8 +85,8 @@ export default class Running extends React.Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <td><input type="number" className="thin-width" value={this.state.time} onChange={this.handleTimeChange}/></td>
-                      <td><input type="number" id="distanceField" className="thin-width" value={this.state.distance} onChange={this.handleDistanceChange} /></td>
+                      <td><input type="number" className="thin-width" value={this.state.time} onChange={this.handleTimeChange}/>  minutes</td>
+                      <td><input type="number" className="thin-width" id="distanceField"  value={this.state.distance} onChange={this.handleDistanceChange} />  miles</td>
                     </tr>
                   </tbody>
                 </table>
