@@ -84,6 +84,10 @@ export default class Dashboard extends React.Component {
           {<HeatMap/>}
           <div className="row">
             {this.state.workouts.map( (workout, index) => {
+              var isRun = false;
+              if(workout.type === 'running') {
+                isRun = true;
+              }
               return (
                 <div className="col-md-4">
                   <div className="panel panel-default">
@@ -97,9 +101,9 @@ export default class Dashboard extends React.Component {
                       <table>
                         <thead>
                           <tr>
-                            <td className="bold">Exercise</td>
-                            <td className="bold">Weight</td>
-                            <td className="bold">Reps</td>
+                            <td className="bold">{ isRun ? '' : 'Exercise' }</td>
+                            <td className="bold">{ isRun ? 'Time' : 'Weight' }</td>
+                            <td className="bold">{ isRun ? 'Distance' : 'Reps' }</td>
                           </tr>
                         </thead>
                         <tbody>

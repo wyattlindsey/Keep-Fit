@@ -103,6 +103,15 @@
   display: block;
   right: 0px;
   bottom: 0px;
+  margin-right: 120px;
+  margin-bottom: 10px;
+}
+
+.navbutton-rightright {
+  position: absolute;
+  display: block;
+  right: 0px;
+  bottom: 0px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
