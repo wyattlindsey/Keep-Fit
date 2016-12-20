@@ -24,7 +24,7 @@ export default class Nav extends React.Component {
         <div className="container-fullwidth">
           <nav className="navbar navbar-default navbar-static purple">
             <div className="navbar-header">
-              <img className="logo" src="../../assets/kf.png"/>
+              <Link to='/'><img className="logo" src="../../assets/kf.png"/></Link>
             </div>
               {/* This is where we could add dynamic user login status
             <div className="navbar-right text-white">User</div>*/}
