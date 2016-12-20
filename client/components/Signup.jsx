@@ -35,7 +35,7 @@ export default class Signup extends React.Component {
         console.log('The following account has been submitted: ' + resp);
       }
     })
-    //browserHistory.push('/');
+    browserHistory.push('/dashboard');
 
   }
 
