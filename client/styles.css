@@ -29,6 +29,16 @@
   background-color: purple;
 }
 
+.sign-in-button-signup {
+  color: white;
+  background-color: purple;
+  margin: 24px;
+}
+
+.sign-in-from-signup {
+  margin: 24px;
+}
+
 .keep-fit-splash-columns {
   color: rgb(68, 37, 107);
   text-align: center;
@@ -188,6 +198,7 @@ h4 {
   margin-top: 5%;
   height: 500px;
   border: 2px solid black;
+}
 .bold {
   font-weight: bold;
 }

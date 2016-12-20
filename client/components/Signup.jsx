@@ -78,6 +78,10 @@ export default class Signup extends React.Component {
               </div>
           </div>
         </div>
+        <div className="row flex-center sign-in-from-signup">
+          <p>Already a member?</p>
+          <Link to="/signin"><button className="btn btn-small sign-in-button-signup flex-center">Sign in</button></Link>
+        </div>
       </div>
     )
   };
