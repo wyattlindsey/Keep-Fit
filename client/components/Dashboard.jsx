@@ -1,4 +1,4 @@
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 import Nav from './Nav.jsx';
 import HeatMap from './HeatMap.jsx';
 
@@ -73,6 +73,7 @@ export default class Dashboard extends React.Component {
         that.getUsersWorkouts();
       }
     });
+    browserHistory.push('/');
   }
 
   render() {
@@ -96,18 +97,24 @@ export default class Dashboard extends React.Component {
                       <table>
                         <thead>
                           <tr>
-                            <td>Exercise</td>
-                            <td>Weight</td>
-                            <td>Reps</td>
+                            <td className="bold">Exercise</td>
+                            <td className="bold">Weight</td>
+                            <td className="bold">Reps</td>
                           </tr>
                         </thead>
                         <tbody>
                         {workout.exercises.map( (exercise, index) => {
+                          var showExercise = null;
+                          if(exercise.exercise) {
+                            showExercise = <td>{exercise.exercise}</td>;
+                          } else {
+                            showExercise;
+                          }
                           return (
                             <tr key={index}>
-                              <td>{exercise.exercise}</td>
-                              <td>{exercise.weight}</td>
-                              <td>{exercise.reps}</td>
+                              <td>{showExercise}</td>
+                              <td>{exercise.weight || exercise.time}</td>
+                              <td>{exercise.reps || exercise.distance}</td>
                             </tr>
                           )
                         })}
