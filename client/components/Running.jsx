@@ -57,7 +57,7 @@ export default class Running extends React.Component {
         console.log('Your workout cannot be submitted at this time. ');
       }
     });
-    browserHistory.push('/');
+    browserHistory.push('/dashboard');
   }
 
   render() {

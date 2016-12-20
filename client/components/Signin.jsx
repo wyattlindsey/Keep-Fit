@@ -38,7 +38,7 @@ export default class Signin extends React.Component {
     .done(function(body) {
       window.localStorage.setItem('com.FitKeeper', body.token);
       window.sessionStorage.setItem('user', body.name)
-      browserHistory.push(`/`);
+      browserHistory.push(`/dashboard`);
     })
 
 
