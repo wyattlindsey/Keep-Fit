@@ -20,14 +20,23 @@ export default class Splash extends React.Component {
             <div className='col-md-4'>
               <span className='glyphicon glyphicon-heart flex-center' aria-hidden='true' />
               <h3 className='flex-center'>Built for your health</h3>
+              <div className='marketing-screenshot'>
+                <img src='assets/screenshot1.png' alt='screenshot of workout creator' />
+              </div>
             </div>
             <div className='col-md-4'>
               <span className='glyphicon glyphicon-user flex-center' aria-hidden='true' />
               <h3 className='flex-center'>Customized for your style</h3>
+              <div className='marketing-screenshot'>
+                <img src='assets/screenshot2.png' alt='screenshot of workout creator' />
+              </div>
             </div>
             <div className='col-md-4'>
               <span className='glyphicon glyphicon-scale flex-center' aria-hidden='true' />
               <h3 className='flex-center'>Designed for accountability</h3>
+              <div className='marketing-screenshot'>
+                <img src='assets/screenshot3.png' alt='screenshot of workout creator' />
+              </div>
             </div>
           </div>
           <div className='row call-to-action'>
