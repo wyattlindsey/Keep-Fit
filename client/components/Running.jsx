@@ -43,11 +43,18 @@ export default class Running extends React.Component {
     newWorkout.type = 'running';
     newWorkout.name = this.state.workoutName;
     newWorkout.exercises = JSON.stringify(exercises);
-    $.post(`/api/users/${userId}/workouts`, newWorkout, (err, resp)=>{
-      if(err) {
-        console.log('Your run cannot be submitted at this time. ' +  err);
+    $.post(`/api/users/${userId}/pending`, newWorkout, (resp)=>{
+      if(resp) {
+        console.log('The following workout has been submitted to pending: ' + resp);
+        $.post(`/api/users/${userId}/workouts`, newWorkout, (resp)=>{
+          if(resp) {
+            console.log('The following workout has been submitted to workouts: ' + resp);
+          } else {
+            console.log('Your workout cannot be submitted at this time. ');
+          }
+        });
       } else {
-        console.log('The following run has been submitted: ' + resp);
+        console.log('Your workout cannot be submitted at this time. ');
       }
     });
     browserHistory.push('/');
