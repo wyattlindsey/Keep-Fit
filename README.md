@@ -2,6 +2,8 @@
 
 A fitness app for you and your friends to have fun, get fit and stay accountable.
 
+Try it out at [https://keep-fit-app.herokuapp.com/](https://keep-fit-app.herokuapp.com/)
+
 ## Team
 
   - __Product Owner__: [Wyatt Lindsey](https://github.com/wyattlindsey)
